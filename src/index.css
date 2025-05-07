@@ -1,0 +1,191 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 49 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 0%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 49 100% 95%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 90%;
+    --ring: 49 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 49 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 49 100% 95%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 49 100% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 49 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 49 100% 30%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 30%;
+    --input: 0 0% 20%;
+    --ring: 49 100% 50%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 49 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 49 100% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 30%;
+    --sidebar-ring: 49 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .section {
+    @apply py-16 lg:py-28;
+  }
+
+  .container-custom {
+    @apply container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-horizop-yellow hover:bg-horizop-darkYellow text-horizop-black font-bold py-3 px-6 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl inline-block;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-horizop-yellow text-horizop-black hover:bg-horizop-yellow hover:text-horizop-black font-bold py-3 px-6 rounded-md transition-all duration-300 shadow-md hover:shadow-lg inline-block;
+  }
+  
+  .heading-large {
+    @apply font-serif text-3xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+  
+  .heading-medium {
+    @apply font-serif text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+  }
+
+  .animated-gradient {
+    @apply bg-gradient-to-br from-horizop-yellow via-horizop-lightYellow to-white bg-size-200 animate-gradient-xy;
+  }
+
+  .glow-effect {
+    @apply animate-pulse-glow;
+  }
+
+  .float-element {
+    @apply animate-float;
+  }
+
+  .spin-element {
+    @apply animate-spin-slow;
+  }
+
+  .bounce-element {
+    @apply animate-bounce-subtle;
+  }
+  
+  .elegant-card {
+    @apply bg-white shadow-lg rounded-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .elegant-header {
+    @apply font-serif text-horizop-navy;
+  }
+  
+  .elegant-section {
+    @apply py-16 lg:py-28;
+  }
+  
+  .animated-background {
+    @apply bg-gradient-to-r from-horizop-lightBlue via-white to-horizop-lightYellow bg-[length:200%_100%] animate-background-pan;
+  }
+  
+  .elegant-divider {
+    @apply w-20 h-1 bg-horizop-gold mx-auto my-6;
+  }
+}
+
+@layer utilities {
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  .animate-gradient-xy {
+    animation: gradient-xy 15s ease infinite;
+  }
+
+  @keyframes gradient-xy {
+    0%, 100% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+  }
+}
