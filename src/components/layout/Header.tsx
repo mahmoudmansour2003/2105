@@ -54,50 +54,54 @@ const Header = () => {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <img src="/images/logo.png" alt="HORIZOP Logo" className="h-8 w-8 object-contain" />
-            <span className={`font-serif text-2xl font-bold transition-colors duration-300 ${isScrolled ? 'text-horizop-navy' : 'text-white'}`}>
-              HORIZOP ENERGY
-            </span>
-          </Link>
+          <div className="flex items-center space-x-2 mr-16">
+            <Link to="/" className="flex items-center space-x-2">
+              <img src="/images/logo.png" alt="HORIZOP Logo" className="h-8 w-8 object-contain" />
+              <span className={`font-serif text-2xl font-bold transition-colors duration-300 ${isScrolled ? 'text-horizop-navy' : 'text-white'}`}>
+                HORIZOP ENERGY
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              item.href.startsWith('/#') ? (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className={`font-medium tracking-wide transition-colors duration-300 hover:text-horizop-yellow ${
-                    isScrolled ? 'text-horizop-navy' : 'text-white'
-                  }`}
-                >
-                  {item.title}
-                </a>
-              ) : (
-                <Link
-                  key={item.title}
-                  to={item.href}
-                  className={`font-medium tracking-wide transition-colors duration-300 hover:text-horizop-yellow ${
-                    isScrolled ? 'text-horizop-navy' : 'text-white'
-                  }`}
-                >
-                  {item.title}
-                </Link>
-              )
-            ))}
-          </nav>
+          <div className="hidden md:flex items-center">
+            <nav className="flex items-center space-x-6">
+              {navItems.map((item) => (
+                item.href.startsWith('/#') ? (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
+                    className={`text-base font-semibold tracking-wide transition-colors duration-300 hover:text-horizop-yellow whitespace-nowrap px-2 ${
+                      isScrolled ? 'text-horizop-navy' : 'text-white'
+                    }`}
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.title}
+                    to={item.href}
+                    className={`text-base font-semibold tracking-wide transition-colors duration-300 hover:text-horizop-yellow whitespace-nowrap px-2 ${
+                      isScrolled ? 'text-horizop-navy' : 'text-white'
+                    }`}
+                  >
+                    {item.title}
+                  </Link>
+                )
+              ))}
+            </nav>
 
-          <div className="hidden md:block">
-            <Link to="/network">
-              <Button className="btn-primary">
-                Join the Network
-              </Button>
-            </Link>
+            <div className="ml-6">
+              <Link to="/network">
+                <Button className="btn-primary">
+                  Join the Network
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
