@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  devices   Device[]
+  readings  EnergyReading[]
+}
+
+model Device {
+  id          Int            @id @default(autoincrement())
+  name        String
+  type        DeviceType
+  status      DeviceStatus   @default(ACTIVE)
+  userId      Int
+  user        User           @relation(fields: [userId], references: [id])
+  readings    EnergyReading[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model EnergyReading {
+  id        Int      @id @default(autoincrement())
+  value     Float
+  unit      String   @default("kWh")
+  deviceId  Int
+  device    Device   @relation(fields: [deviceId], references: [id])
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  timestamp DateTime @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum DeviceType {
+  SOLAR_PANEL
+  WIND_TURBINE
+  BATTERY
+  SMART_METER
+  OTHER
+}
+
+enum DeviceStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+  OFFLINE
+}

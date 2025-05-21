@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 import { Search, MapPin, Filter, Users, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 const Network = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('all');
+  const { t } = useTranslation();
 
   const regions = [
-    { id: 'all', name: 'All Regions' },
-    { id: 'north', name: 'North' },
-    { id: 'south', name: 'South' },
-    { id: 'east', name: 'East' },
-    { id: 'west', name: 'West' },
-    { id: 'central', name: 'Central' }
+    { id: 'all', nameKey: 'networkRegionAll' },
+    { id: 'north', nameKey: 'networkRegionNorth' },
+    { id: 'south', nameKey: 'networkRegionSouth' },
+    { id: 'east', nameKey: 'networkRegionEast' },
+    { id: 'west', nameKey: 'networkRegionWest' },
+    { id: 'central', nameKey: 'networkRegionCentral' }
   ];
 
   return (
     <div className="min-h-screen flex flex-col bg-horizop-charcoal">
-      <Header />
-      <main className="flex-grow pt-28">
+      <main className="flex-grow">
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -33,9 +33,9 @@ const Network = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h1 className="text-5xl font-serif font-extrabold text-horizop-yellow mb-2 drop-shadow-lg italic tracking-wide">INSTALLER NETWORK</h1>
+              <h1 className="text-5xl font-serif font-extrabold text-horizop-yellow mb-2 drop-shadow-lg italic tracking-wide">{t('networkPageTitle')}</h1>
               <p className="text-white text-lg max-w-2xl mx-auto mt-4 mb-8">
-                Connect with certified EV charger installers and resellers in your area.
+                {t('networkPageDescription')}
               </p>
             </motion.div>
 
@@ -46,7 +46,7 @@ const Network = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-horizop-gold" />
                   <Input
                     type="text"
-                    placeholder="Search by location or company name..."
+                    placeholder={t('networkSearchPlaceholder')}
                     className="pl-10 bg-white/10 border-horizop-gold text-white placeholder:text-gray-400"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -60,13 +60,13 @@ const Network = () => {
                   >
                     {regions.map((region) => (
                       <option key={region.id} value={region.id}>
-                        {region.name}
+                        {t(region.nameKey)}
                       </option>
                     ))}
                   </select>
                   <Button className="bg-horizop-yellow text-horizop-navy hover:bg-horizop-gold">
                     <Filter className="mr-2" />
-                    Filters
+                    {t('networkFilterButton')}
                   </Button>
                 </div>
               </div>
@@ -89,19 +89,19 @@ const Network = () => {
                           <Users className="text-horizop-yellow" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-horizop-yellow">Company Name</h3>
-                          <p className="text-gray-400">Certified Installer</p>
+                          <h3 className="text-xl font-bold text-horizop-yellow">{t('networkCardCompanyNamePlaceholder')}</h3>
+                          <p className="text-gray-400">{t('networkCardInstallerType')}</p>
                         </div>
                       </div>
                       <div className="space-y-2 mb-4">
                         <p className="text-white flex items-center">
                           <MapPin className="w-4 h-4 mr-2 text-horizop-gold" />
-                          Location, City, Country
+                          {t('networkCardLocationPlaceholder')}
                         </p>
-                        <p className="text-gray-400">Services: Installation, Maintenance, Support</p>
+                        <p className="text-gray-400">{t('networkCardServicesLabel')}: {t('networkCardServicesPlaceholder')}</p>
                       </div>
                       <Button className="w-full bg-horizop-yellow text-horizop-navy hover:bg-horizop-gold">
-                        Contact Installer
+                        {t('networkCardContactButton')}
                       </Button>
                     </CardContent>
                   </Card>
@@ -117,13 +117,13 @@ const Network = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h2 className="text-3xl font-serif font-bold text-horizop-yellow mb-4">Become a Certified Partner</h2>
+              <h2 className="text-3xl font-serif font-bold text-horizop-yellow mb-4">{t('networkBecomePartnerTitle')}</h2>
               <p className="text-white mb-8 max-w-2xl mx-auto">
-                Join our network of certified installers and resellers. Get access to exclusive training, support, and business opportunities.
+                {t('networkBecomePartnerDescription')}
               </p>
               <Button className="bg-horizop-yellow text-horizop-navy hover:bg-horizop-gold px-8 py-6 text-lg">
                 <UserPlus className="mr-2" />
-                Apply Now
+                {t('networkApplyNowButton')}
               </Button>
             </motion.div>
           </div>

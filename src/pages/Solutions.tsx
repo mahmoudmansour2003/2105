@@ -1,71 +1,71 @@
 import React from 'react';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const solutions = [
   {
-    title: 'HORIZOP Smartplug',
-    type: 'for Home',
+    titleKey: 'HORIZOP SmartPlug',
+    typeKey: 'solutionTypeHome',
     image: '/images/freepik__a-man-charging-his-electric-vehicle__38007.png',
-    features: [
-      'A simple and futuristic design',
-      'Easy installation with a standard 3-year warranty',
-      'Up to 22kW of output power for 3-Phase AC charging',
-      'Up to 7.4kW output power for 1-Phase AC charging',
-      'Integrated contactless RFID payment system',
-      'User-friendly mobile application for charge monitoring',
-      'An LED bar on the front to indicate the charging status',
-      'Compatible with existing solar PV installations',
-      `Bidirectional charging allows a supported EV's battery to be used as a power supply for buildings.`
+    featuresKeys: [
+      'simpleDesign',
+      'easyInstallationWarranty',
+      '22kWOutput',
+      '7_4kWOutput',
+      'rfidPayment',
+      'mobileApp',
+      'ledIndicator',
+      'solarCompatibility',
+      'bidirectionalCharging'
     ],
-    badge: 'Coming Soon',
+    badgeKey: 'badgeComingSoon',
     bg: 'bg-white'
   },
   {
-    title: 'HORIZOP Smartplug',
-    type: 'for Semi-Public',
+    titleKey: 'HORIZOP SmartPlug',
+    typeKey: 'solutionTypeSemiPublic',
     image: '/images/Semi Public Use.png',
-    features: [
-      'A simple and futuristic design',
-      'Easy installation with a standard 3-year warranty',
-      'Up to 22kW of output power for 3-Phase AC charging',
-      'Up to 7.4kW output power for 1-Phase AC charging',
-      'Integrated contactless RFID payment system',
-      'User-friendly mobile application for charge monitoring',
-      'An LED bar on the front to indicate the charging status',
-      'Compatible with existing solar PV installations',
-      `Bidirectional charging allows a supported EV's battery to be used as a power supply for buildings.`
+    featuresKeys: [
+      'simpleDesign',
+      'easyInstallationWarranty',
+      '22kWOutput',
+      '7_4kWOutput',
+      'rfidPayment',
+      'mobileApp',
+      'ledIndicator',
+      'solarCompatibility',
+      'bidirectionalCharging'
     ],
-    badge: 'Coming Soon',
+    badgeKey: 'badgeComingSoon',
     bg: 'bg-white'
   },
   {
-    title: 'HORIZOP FastPlug',
-    type: 'for Public',
+    titleKey: 'HORIZOP FastPlug DC Charger',
+    typeKey: 'solutionTypePublic',
     image: '/images/2.png',
-    features: [
-      'The highest DC charging power output available on the market from 100kW up to 350 kW',
-      'A modular charging design for high uptime and reduced costs',
-      'An integrated contactless RFID payment system',
-      'A 14" anti-vandal daylight readable color touchscreen',
-      'Can be configured as a Master-Satellite solution'
+    featuresKeys: [
+      'fastChargingPower',
+      'modularDesign',
+      'integratedPayment',
+      'touchscreen',
+      'masterSatellite'
     ],
-    badge: 'Under Construction',
+    badgeKey: 'badgeUnderConstruction',
     bg: 'bg-white'
   },
   {
-    title: 'HORIZOP SunPlug',
-    type: 'for Public',
+    titleKey: 'HORIZOP SunPlug',
+    typeKey: 'solutionTypePublic',
     image: '/images/sunplug.png',
-    features: [
-      'Solar-powered EV charging',
-      'Weather-resistant design',
-      'Remote monitoring and control',
-      'Integrated payment system',
-      'Sustainable and eco-friendly'
+    featuresKeys: [
+      'sunplugFeatureSolar',
+      'sunplugFeatureWeather',
+      'sunplugFeatureRemote',
+      'sunplugFeaturePayment',
+      'sunplugFeatureSustainable'
     ],
-    badge: 'Under Construction',
+    badgeKey: 'badgeUnderConstruction',
     bg: 'bg-white'
   }
 ];
@@ -76,10 +76,11 @@ const badgeVariants = {
 };
 
 const Solutions = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen flex flex-col bg-horizop-charcoal">
-      <Header />
-      <main className="flex-grow pt-28">
+      <main className="flex-grow">
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -89,13 +90,13 @@ const Solutions = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h1 className="text-5xl font-serif font-extrabold text-horizop-yellow mb-2 drop-shadow-lg italic tracking-wide">OUR SOLUTIONS</h1>
-              <p className="text-white text-lg max-w-2xl mx-auto mt-4 mb-8">We're committed to bringing you the best EV charging experience.</p>
+              <h1 className="text-5xl font-serif font-extrabold text-horizop-yellow mb-2 drop-shadow-lg italic tracking-wide">{t('solutionsPageTitle')}</h1>
+              <p className="text-white text-lg max-w-2xl mx-auto mt-4 mb-8">{t('solutionsPageDescription')}</p>
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10">
               {solutions.map((solution, idx) => (
                 <motion.div
-                  key={solution.title + solution.type}
+                  key={solution.titleKey + solution.typeKey}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: idx * 0.15 }}

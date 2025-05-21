@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '@/components/layout/Header';
+import { useNavigate } from 'react-router-dom';
+// import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import WhoWeAreSection from '@/components/sections/WhoWeAreSection';
@@ -9,9 +10,10 @@ import ProductsSection from '@/components/sections/ProductsSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 const Index = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col bg-horizop-ivory">
-      <Header />
+      {/* <Header /> */}
       <main className="flex-grow">
         <HeroSection />
         <WhoWeAreSection />

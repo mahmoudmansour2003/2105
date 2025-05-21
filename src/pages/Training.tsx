@@ -1,52 +1,54 @@
 import React from 'react';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 import { BookOpen, Download, Calendar, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 const Training = () => {
+  const { t } = useTranslation();
+
   const courses = [
     {
-      title: 'IRVE Installation Fundamentals',
-      description: 'Learn the basics of EV charging infrastructure installation and safety protocols.',
-      duration: '3 days',
-      level: 'Beginner',
+      titleKey: 'trainingCourseIrveFundamentalsTitle',
+      descriptionKey: 'trainingCourseIrveFundamentalsDesc',
+      durationKey: 'trainingCourseDuration3Days',
+      levelKey: 'trainingCourseLevelBeginner',
       icon: <BookOpen className="text-horizop-yellow" />
     },
     {
-      title: 'Advanced IRVE Systems',
-      description: 'Deep dive into complex charging systems, network integration, and troubleshooting.',
-      duration: '5 days',
-      level: 'Advanced',
+      titleKey: 'trainingCourseAdvancedIrveTitle',
+      descriptionKey: 'trainingCourseAdvancedIrveDesc',
+      durationKey: 'trainingCourseDuration5Days',
+      levelKey: 'trainingCourseLevelAdvanced',
       icon: <Award className="text-horizop-yellow" />
     },
     {
-      title: 'IRVE Maintenance & Support',
-      description: 'Comprehensive training on maintenance procedures and customer support.',
-      duration: '2 days',
-      level: 'Intermediate',
+      titleKey: 'trainingCourseMaintenanceTitle',
+      descriptionKey: 'trainingCourseMaintenanceDesc',
+      durationKey: 'trainingCourseDuration2Days',
+      levelKey: 'trainingCourseLevelIntermediate',
       icon: <Users className="text-horizop-yellow" />
     }
   ];
 
   const resources = [
     {
-      title: 'IRVE Installation Guide',
-      type: 'PDF',
+      titleKey: 'trainingResourceInstallationGuideTitle',
+      typeKey: 'trainingResourceTypePDF',
       size: '2.4 MB',
       icon: <Download className="text-horizop-yellow" />
     },
     {
-      title: 'Safety Protocols Manual',
-      type: 'PDF',
+      titleKey: 'trainingResourceSafetyManualTitle',
+      typeKey: 'trainingResourceTypePDF',
       size: '1.8 MB',
       icon: <Download className="text-horizop-yellow" />
     },
     {
-      title: 'Technical Specifications',
-      type: 'PDF',
+      titleKey: 'trainingResourceTechSpecsTitle',
+      typeKey: 'trainingResourceTypePDF',
       size: '3.2 MB',
       icon: <Download className="text-horizop-yellow" />
     }
@@ -54,8 +56,7 @@ const Training = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-horizop-charcoal">
-      <Header />
-      <main className="flex-grow pt-28">
+      <main className="flex-grow">
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <motion.div

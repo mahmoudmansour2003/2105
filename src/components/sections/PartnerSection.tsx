@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Database, Monitor, ChartLine, FileCode } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const PartnerSection = () => {
   const scrollToSection = (id: string) => {
@@ -11,40 +12,42 @@ const PartnerSection = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   const services = [
     {
       icon: <Monitor size={32} className="text-horizop-gold" />,
-      title: "Custom Dashboard Development",
-      description: "Interactive dashboards for real-time energy monitoring and insights."
+      titleKey: "partnerServiceDashboardTitle",
+      descriptionKey: "partnerServiceDashboardDesc"
     },
     {
       icon: <Database size={32} className="text-horizop-gold" />,
-      title: "Energy Data Solutions",
-      description: "Advanced data analytics for optimizing energy consumption and production."
+      titleKey: "partnerServiceDataTitle",
+      descriptionKey: "partnerServiceDataDesc"
     },
     {
       icon: <ChartLine size={32} className="text-horizop-gold" />,
-      title: "Predictive Analytics",
-      description: "AI-powered forecasting to anticipate energy needs and market trends."
+      titleKey: "partnerServicePredictiveTitle",
+      descriptionKey: "partnerServicePredictiveDesc"
     },
     {
       icon: <FileCode size={32} className="text-horizop-gold" />,
-      title: "Custom Software Engineering",
-      description: "Tailored software solutions for specific energy management challenges."
+      titleKey: "partnerServiceSoftwareTitle",
+      descriptionKey: "partnerServiceSoftwareDesc"
     }
   ];
 
   const caseStudies = [
     {
-      title: "Renewable Integration Platform",
+      titleKey: "partnerCaseStudyRenewableTitle",
       client: "Major Utility Provider",
-      description: "Developed a platform that increased renewable energy integration by 45% through improved forecasting and grid management.",
+      descriptionKey: "partnerCaseStudyRenewableDesc",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2372&q=80"
     },
     {
-      title: "Energy Consumption Dashboard",
+      titleKey: "partnerCaseStudyEnergyTitle",
       client: "Manufacturing Consortium",
-      description: "Created a real-time monitoring system that helped reduce energy costs by 28% across multiple facilities.",
+      descriptionKey: "partnerCaseStudyEnergyDesc",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2369&q=80"
     }
   ];
@@ -53,11 +56,11 @@ const PartnerSection = () => {
     <section id="partner-with-us" className="elegant-section bg-gray-50">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <span className="inline-block text-horizop-gold font-medium mb-2 tracking-wider text-sm uppercase">Collaboration</span>
-          <h2 className="heading-medium text-horizop-navy mb-4">Partner With Us</h2>
+          <span className="inline-block text-horizop-gold font-medium mb-2 tracking-wider text-sm uppercase">{t('partnerSubtitle')}</span>
+          <h2 className="heading-medium text-horizop-navy mb-4">{t('partnerTitle')}</h2>
           <div className="elegant-divider"></div>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Collaborate with HORIZOP ENERGY to drive innovation and efficiency in your energy operations. Our expertise in software development and energy systems creates powerful solutions for tomorrow's challenges.
+            {t('partnerDescription')}
           </p>
           <a href="/partner-portal">
             <Button className="bg-horizop-yellow text-horizop-navy font-bold shadow-lg rounded-lg px-8 py-5 text-lg md:text-xl hover:bg-horizop-gold hover:text-horizop-black border-2 border-horizop-yellow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-horizop-gold focus:ring-offset-2 text-center mt-8">
