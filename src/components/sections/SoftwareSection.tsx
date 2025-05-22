@@ -1,101 +1,70 @@
 import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-
-const softwareData = [
-  {
-    titleKey: 'softwareDlmTitle',
-    descriptionKey: 'softwareDlmDescription',
-    image: '/images/freepik__a-vertical-electric-vehicle-charging-station__21097.png',
-    bg: 'bg-horizop-lightYellow'
-  },
-  {
-    titleKey: 'softwareHorizonTitle',
-    descriptionKey: 'softwareHorizonDescription',
-    image: '/images/pexels-kevin-ku-92347-577585.jpg',
-    bg: 'bg-horizop-yellow'
-  }
-];
+import { Rocket, Cloud } from 'lucide-react';
 
 const SoftwareSection = () => {
-  const { t } = useTranslation();
+  const softwareData = [
+    {
+      icon: <Rocket size={40} className="text-horizop-gold" />,
+      title: "CHARGE DLM",
+      description: "We offer Dynamic Load Management (DLM) software that allows you to control the charging of several EVs simultaneously in less time using the available power more efficiently and balancing it between the EV chargers.",
+      bgColor: "bg-horizop-ivory",
+      image: '/images/freepik__a-vertical-electric-vehicle-charging-station__21097.png'
+    },
+    {
+      icon: <Cloud size={40} className="text-horizop-gold" />,
+      title: "CHARGE HORIZON",
+      description: "Charge Horizon is a cloud-based platform for usage monitoring and reporting. It is designed to collect and store data from a specific set of EV chargers located in car parks, offices, and communal blocks.",
+      bgColor: "bg-horizop-yellow",
+      image: '/images/pexels-kevin-ku-92347-577585.jpg'
+    }
+  ];
 
   return (
-    <section id="software" className="py-20 px-4 bg-horizop-ivory">
+    <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl font-serif font-bold text-horizop-navy mb-2 drop-shadow-lg">{t('softwareSectionTitle')}</h2>
-          <div className="w-20 h-1 bg-horizop-gold mb-16 rounded"></div>
+          <h2 className="heading-medium font-serif text-horizop-navy mb-4">Software</h2>
+          <div className="w-20 h-1 bg-horizop-gold mb-6 mx-auto rounded"></div>
         </motion.div>
 
         <div className="space-y-24">
           {softwareData.map((item, index) => (
             <motion.div
-              key={item.titleKey}
+              key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className={`rounded-3xl shadow-xl overflow-hidden ${item.bg}`}
-            >
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="p-8 md:p-12">
-                  <motion.h3 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="text-3xl font-serif font-extrabold text-horizop-navy mb-6 tracking-tight"
-                  >
-                    {t(item.titleKey)}
-                  </motion.h3>
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    viewport={{ once: true }}
-                    className="text-horizop-navy space-y-4 text-lg"
-                  >
-                    {t(item.descriptionKey).split('. ').map((sentence, idx) => (
-                      <motion.p
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 }}
-                        viewport={{ once: true }}
-                        className="flex items-start"
-                      >
-                        {sentence && (
-                          <>
-                            <span className="text-horizop-gold mr-2">•</span>
-                            {sentence}.
-                          </>
-                        )}
-                      </motion.p>
-                    ))}
-                  </motion.div>
+              className={`rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2 items-center ${item.bgColor} ${index % 2 === 0 ? 'md:grid-flow-col-dense' : ''}`}>
+
+              <div className={`p-8 md:p-12 flex flex-col justify-center ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
+                <div className="flex-shrink-0 mb-4">
+                  {item.icon}
                 </div>
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="relative h-[400px] overflow-hidden"
-                >
-                  <motion.img 
-                    src={item.image} 
-                    alt={t(item.titleKey)}
-                    className="absolute inset-0 w-full h-full object-contain p-8"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.div>
+                <h3 className="text-2xl font-serif font-semibold mb-3 text-horizop-navy">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
               </div>
+
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className={`relative h-[300px] md:h-[400px] overflow-hidden ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </motion.div>
             </motion.div>
           ))}
         </div>

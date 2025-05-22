@@ -206,39 +206,39 @@ const Landing = () => {
             <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
               Country
             </label>
-            <select
+          <select
               id="country"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-horizop-gold"
-              value={country}
-              onChange={e => setCountry(e.target.value)}
-              required
-            >
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-horizop-gold"
+            value={country}
+            onChange={e => setCountry(e.target.value)}
+            required
+          >
               <option value="" disabled>Select a country</option>
               {Object.values(countryLanguageMap).map(country => (
                 <option key={country.name} value={country.name}>{country.name}</option>
               ))}
-            </select>
+          </select>
           </div>
 
           <div className="w-full">
             <label htmlFor="language" className="block text-sm font-medium text-gray-700 mb-1">
               Language
             </label>
-            <select
+          <select
               id="language"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-horizop-gold"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-horizop-gold"
               value={language}
               onChange={e => setLanguage(e.target.value)}
-              required
+            required
               disabled={!country}
-            >
+          >
               <option value="" disabled>
                 {country ? 'Select a language' : 'Select a country first'}
               </option>
               {availableLanguages.map(lang => (
                 <option key={lang} value={lang}>{lang}</option>
               ))}
-            </select>
+          </select>
           </div>
 
           <button

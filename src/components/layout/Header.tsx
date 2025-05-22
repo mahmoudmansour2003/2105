@@ -78,10 +78,10 @@ const Header = () => {
       <div className="px-4 sm:px-6 lg:px-8 py-3">
         <div className="container mx-auto px-8 py-3 bg-gray-100 bg-opacity-90 rounded-2xl shadow-lg flex items-center">
           <div className="flex items-center mr-8">
-            <Link to="/">
+              <Link to="/">
               <img src="/images/HE_Carr_text.png" alt="HORIZOP ENERGY logo" className="h-10" />
-            </Link>
-          </div>
+              </Link>
+            </div>
 
           <div className="flex-grow flex items-center justify-between">
             <nav className="hidden md:flex items-center space-x-6 text-lg font-normal">
@@ -139,9 +139,9 @@ const Header = () => {
                 Shop now
               </Link>
               <Link to="/login" className="text-gray-800 hover:text-horizop-gold transition hidden md:block">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
               </Link>
               <button className="md:hidden p-2 text-gray-800" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                 {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -150,59 +150,59 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-black/40 z-40 flex flex-col items-end">
-          <div className="w-3/4 max-w-xs bg-white h-full shadow-lg p-6 flex flex-col gap-6">
-            <button className="self-end mb-4" onClick={() => setMobileMenuOpen(false)}>
-              <X size={28} />
-            </button>
-            {navItems.map((item, idx) => (
+       {mobileMenuOpen && (
+         <div className="fixed inset-0 bg-black/40 z-40 flex flex-col items-end">
+           <div className="w-3/4 max-w-xs bg-white h-full shadow-lg p-6 flex flex-col gap-6">
+             <button className="self-end mb-4" onClick={() => setMobileMenuOpen(false)}>
+               <X size={28} />
+             </button>
+             {navItems.map((item, idx) => (
               <div key={item.title} className="mb-2">
-                <button
-                  className="font-semibold text-lg flex items-center gap-2 w-full text-left"
-                  onClick={() => setOpenDropdown(openDropdown === idx ? null : idx)}
-                >
+                 <button
+                   className="font-semibold text-lg flex items-center gap-2 w-full text-left"
+                   onClick={() => setOpenDropdown(openDropdown === idx ? null : idx)}
+                 >
                   {item.title} {openDropdown === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </button>
-                {openDropdown === idx && (
-                  <div className="ml-6 mt-4 flex flex-col gap-3">
+                 </button>
+                 {openDropdown === idx && (
+                   <div className="ml-6 mt-4 flex flex-col gap-3">
                     {item.title === 'Catalog' && item.dropdown
-                      ? item.dropdown.map((group, gIdx) => (
-                          <div key={gIdx} className="mb-4">
+                       ? item.dropdown.map((group, gIdx) => (
+                           <div key={gIdx} className="mb-4">
                             <div className="text-gray-400 font-bold mb-2 text-xl">{group.groupTitle}</div>
-                            {group.items.map((prod) => (
-                              <a
+                             {group.items.map((prod) => (
+                               <a
                                 key={prod.name}
-                                href={prod.href}
-                                className="block font-extrabold text-2xl text-gray-800 hover:text-horizop-gold mb-2"
-                              >
+                                 href={prod.href}
+                                 className="block font-extrabold text-2xl text-gray-800 hover:text-horizop-gold mb-2"
+                               >
                                 {prod.name}
-                              </a>
-                            ))}
-                          </div>
-                        ))
+                               </a>
+                             ))}
+                           </div>
+                         ))
                       : item.dropdownItems && item.dropdownItems.map((subKey) => (
-                          <a
-                            key={subKey}
-                            href="#"
-                            className="block px-6 py-3 text-xl font-bold text-gray-700 hover:bg-gray-100 rounded"
-                          >
+                           <a
+                             key={subKey}
+                             href="#"
+                             className="block px-6 py-3 text-xl font-bold text-gray-700 hover:bg-gray-100 rounded"
+                           >
                             {subKey}
-                          </a>
-                        ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <button
-              className="px-6 py-2 rounded-full border font-semibold hover:bg-gray-100 transition w-full mt-4 text-lg"
-              onClick={() => { setMobileMenuOpen(false); navigate('/store'); }}
-            >
+                           </a>
+                         ))}
+                   </div>
+                 )}
+               </div>
+             ))}
+             <button
+               className="px-6 py-2 rounded-full border font-semibold hover:bg-gray-100 transition w-full mt-4 text-lg"
+               onClick={() => { setMobileMenuOpen(false); navigate('/store'); }}
+             >
               Shop now
-            </button>
-          </div>
-        </div>
-      )}
+             </button>
+           </div>
+         </div>
+       )}
     </header>
   );
 };
