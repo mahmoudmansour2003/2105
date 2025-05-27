@@ -24,7 +24,19 @@ const PulsarPlus = () => {
 
   const sections = [
     { key: 'description', label: t('Description'), content: t('pulsarPlusDescription') },
-    { key: 'specs', label: t('Technical Specifications'), content: t('pulsarPlusSpecs') },
+    { key: 'specs', label: t('Technical Specifications'), content: `
+      <ul className="list-disc pl-5 text-gray-700 text-base space-y-2">
+        <li>A simple and futuristic design</li>
+        <li>Easy installation with a standard 3-year warranty</li>
+        <li>Up to 22kW of output power for 3-Phase AC charging</li>
+        <li>Up to 7.4kW output power for 1-Phase AC charging</li>
+        <li>Integrated contactless RFID payment system</li>
+        <li>User-friendly mobile application for charge monitoring</li>
+        <li>An LED bar on the front to indicate the charging status</li>
+        <li>Compatible with existing solar PV installations</li>
+        <li>Bidirectional charging allows a supported EV's battery to be used as a power supply for buildings.</li>
+      </ul>
+    ` },
     { key: 'included', label: t(`What's included`), content: t('pulsarPlusIncluded') },
     { key: 'install', label: t('How to install'), content: t('pulsarPlusInstall') },
     { key: 'refunds', label: t('Sales & Refunds'), content: t('pulsarPlusRefunds') },

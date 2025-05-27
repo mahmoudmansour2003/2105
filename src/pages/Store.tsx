@@ -93,8 +93,8 @@ const Store: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex flex-col items-center flex-1 w-full px-4">
-        <h1 className="text-5xl font-light mt-12 mb-2">{t('storeTitle')}</h1>
-        <h2 className="text-2xl font-light mb-10 text-center">{t('storeSubtitle')}</h2>
+        <h1 className="text-5xl font-light mt-12 mb-2">Store</h1>
+        <h2 className="text-2xl font-light mb-10 text-center">Horizop transforms ordinary charging into intelligent energy management.</h2>
         <div className="flex flex-row gap-6 mb-16">
           {/* HORIZOP SmartPlug Card with overlayed text */}
           <Link to="/store/pulsar-plus" className="bg-gray-100 rounded-lg p-0 w-[420px] h-[500px] flex flex-col justify-between shadow-lg hover:scale-105 transition-transform cursor-pointer overflow-hidden relative group">
@@ -129,8 +129,8 @@ const Store: React.FC = () => {
 
       {/* Business Solutions Section */}
       <footer className="w-full bg-[#232f3e] py-10 flex flex-col items-center">
-        <h3 className="text-2xl text-white mb-2 text-center">{t('storeBusinessTitle')}</h3>
-        <p className="text-white text-center max-w-2xl text-sm">{t('storeBusinessText')}</p>
+        <h3 className="text-2xl text-white mb-2 text-center">Looking for charging solutions for your business?</h3>
+        <p className="text-white text-center max-w-2xl text-sm">No matter the industry, we can make charging work for you. Send your details and we'll find the right solution for your business.</p>
       </footer>
     </div>
   );

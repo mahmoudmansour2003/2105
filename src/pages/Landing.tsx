@@ -196,7 +196,16 @@ const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-horizop-navy to-horizop-navy/90">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute z-0 w-full h-full object-cover"
+      >
+        <source src="/images/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className="relative z-10 bg-white/80 rounded-2xl shadow-xl px-10 py-12 flex flex-col items-center w-full max-w-lg">
         <img src="/images/HE_Carr_text.png" alt="HORIZOP ENERGY Logo with text" className="h-24 mb-8" />
         <h1 className="text-4xl font-bold mb-2 text-center text-horizop-navy">Get in charge</h1>
