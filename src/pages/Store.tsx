@@ -1,129 +1,262 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-const smartPlugDescription =
-  'A sleek, easy-to-install EV charger with up to 22kW output, RFID payment, and app control. Compatible with solar systems and supports bidirectional charging. Includes LED status indicator and a 3-year warranty.';
-
-const fastPlugDescription =
-  'High-power DC charger with up to 350kW output, modular design for reliability and cost-efficiency. Features RFID payment, a 14" anti-vandal touchscreen, and supports Master-Satellite configurations.';
-
-const products = [
-  {
-    name: 'HORIZOP SmartPlug',
-    path: '/store/pulsar-plus',
-  },
-  {
-    name: 'HORIZOP FastPlug',
-    path: '/store/accessories',
-  },
-];
+import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
 
 const Store: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const filteredProducts = products.filter(p =>
+  const smartPlugDescription = t('store.smartPlugDescription');
+  const fastPlugDescription = t('store.fastPlugDescription');
+  const mobileChargerDescription = t('store.mobileChargerDescription');
+
+  const accessoriesData = [
+    {
+      id: 'ev-charger-cable1',
+      name: t('store.cable1Name'),
+      image: '/images/EV_Charger_Cable1.png',
+      price: 199.99,
+      features: [
+        t('store.cable1Feat1'),
+        t('store.cable1Feat2'),
+        t('store.cable1Feat3'),
+        t('store.cable1Feat4')
+      ],
+    },
+    {
+      id: 'ev-charger-cable2',
+      name: t('store.cable2Name'),
+      image: '/images/EV_Charger_Cable2.png',
+      price: 249.99,
+      features: [
+        t('store.cable2Feat1'),
+        t('store.cable2Feat2'),
+        t('store.cable2Feat3'),
+        t('store.cable2Feat4')
+      ],
+    },
+    {
+      id: 'ev-charger-cable3',
+      name: t('store.cable3Name'),
+      image: '/images/EV_Charger_Cable3.png',
+      price: 299.99,
+      features: [
+        t('store.cable3Feat1'),
+        t('store.cable3Feat2'),
+        t('store.cable3Feat3'),
+        t('store.cable3Feat4')
+      ],
+    },
+    {
+      id: 'ev-charger-cable4',
+      name: t('store.cable4Name'),
+      image: '/images/EV_Charger_Cable4.png',
+      price: 279.99,
+      features: [
+        t('store.cable4Feat1'),
+        t('store.cable4Feat2'),
+        t('store.cable4Feat3'),
+        t('store.cable4Feat4')
+      ],
+    },
+    {
+      id: 'ev-charger1',
+      name: t('store.compactChargerName'),
+      image: '/images/EV_Charger1.png',
+      price: 899.99,
+      features: [
+        t('store.compactChargerFeat1'),
+        t('store.compactChargerFeat2'),
+        t('store.compactChargerFeat3'),
+        t('store.compactChargerFeat4'),
+        t('store.compactChargerFeat5')
+      ],
+    },
+  ];
+
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [smartPlugExpanded, setSmartPlugExpanded] = useState(false);
+  const [fastPlugExpanded, setFastPlugExpanded] = useState(false);
+  const [mobileChargerExpanded, setMobileChargerExpanded] = useState(false);
+
+  const descriptionRefs = {
+    smartPlug: useRef<HTMLParagraphElement>(null),
+    fastPlug: useRef<HTMLParagraphElement>(null),
+    mobileCharger: useRef<HTMLParagraphElement>(null),
+  };
+
+  const accessoryRefs = useRef<{ [key: string]: React.RefObject<HTMLParagraphElement> }>({});
+  accessoriesData.forEach(acc => {
+    accessoryRefs.current[acc.id] = React.createRef<HTMLParagraphElement>();
+  });
+
+  const [accessoryExpandedStates, setAccessoryExpandedStates] = useState<{ [key: string]: boolean }>(
+    accessoriesData.reduce((acc, current) => ({ ...acc, [current.id]: false }), {})
+  );
+
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
+  const allProducts = [
+    {
+      name: t('store.smartPlugTitle'),
+      path: '/store/pulsar-plus',
+      image: '/images/11kw borne de recharger.png',
+      tag: t('store.homeTag'),
+      description: smartPlugDescription,
+      expanded: smartPlugExpanded,
+      setExpanded: setSmartPlugExpanded,
+      ref: descriptionRefs.smartPlug,
+      price: 649,
+      buttons: (
+        <>
+          <Button asChild className="w-full bg-horizop-gold text-white py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-horizop-gold focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md">
+            <Link to="/store/pulsar-plus">{t('store.buyButton')}</Link>
+          </Button>
+          <a
+            href="/HORIZOP_Energy_EV_Charging_Catalogue_2023_EN.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-horizop-navy text-white py-3 rounded-lg text-lg font-semibold hover:bg-horizop-navy/80 focus:outline-none focus:ring-4 focus:ring-horizop-navy focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center"
+          >
+            {t('store.learnMoreButton')}
+          </a>
+        </>
+      )
+    },
+    {
+      name: t('store.fastPlugTitle'),
+      path: '/store/fastplug',
+      image: '/images/EV_Charger15.png',
+      tag: t('store.businessTag'),
+      description: fastPlugDescription,
+      expanded: fastPlugExpanded,
+      setExpanded: setFastPlugExpanded,
+      ref: descriptionRefs.fastPlug,
+      price: 12999,
+      buttons: (
+        <>
+          <Button asChild className="w-full bg-horizop-gold text-white py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-horizop-gold focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md">
+            <Link to="/store/fastplug">{t('store.buyButton')}</Link>
+          </Button>
+          <a
+            href="/HORIZOP_Energy_EV_Charging_Catalogue_2023_EN.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-horizop-navy text-white py-3 rounded-lg text-lg font-semibold hover:bg-horizop-navy/80 focus:outline-none focus:ring-4 focus:ring-horizop-navy focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center"
+          >
+            {t('store.learnMoreButton')}
+          </a>
+        </>
+      )
+    },
+    {
+      name: t('store.mobileChargerTitle'),
+      path: '/store/mobile-charger',
+      image: '/images/mobile.png',
+      tag: t('store.mobileTag'),
+      description: mobileChargerDescription,
+      expanded: mobileChargerExpanded,
+      setExpanded: setMobileChargerExpanded,
+      ref: descriptionRefs.mobileCharger,
+      price: 499,
+      buttons: (
+        <>
+          <Button asChild className="w-full bg-horizop-gold text-white py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-horizop-gold focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md">
+            <Link to="/store/mobile-charger">{t('store.buyButton')}</Link>
+          </Button>
+          <a
+            href="/HORIZOP_Energy_EV_Charging_Catalogue_2023_EN.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-horizop-navy text-white py-3 rounded-lg text-lg font-semibold hover:bg-horizop-navy/80 focus:outline-none focus:ring-4 focus:ring-horizop-navy focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center"
+          >
+            {t('store.learnMoreButton')}
+          </a>
+        </>
+      )
+    },
+    ...accessoriesData.map(acc => ({
+      name: acc.name,
+      path: '', // No navigation for accessory cards
+      image: acc.image,
+      tag: t('store.accessoryTag'),
+      description: acc.features.join('. ') + '.',
+      expanded: accessoryExpandedStates[acc.id],
+      setExpanded: (state: boolean) => setAccessoryExpandedStates(prev => ({ ...prev, [acc.id]: state })),
+      ref: accessoryRefs.current[acc.id],
+      price: acc.price,
+      buttons: (
+        <>
+          <Button
+            className="w-full bg-horizop-gold text-white py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-horizop-gold focus:ring-opacity-50 transition-all duration-300 ease-in-out shadow-md"
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart({
+                id: acc.id,
+                name: acc.name,
+                price: acc.price,
+                image: acc.image
+              }, 1);
+              navigate('/cart');
+            }}
+          >
+            {t('store.buyButton')}
+          </Button>
+        </>
+      )
+    }))
+  ];
+
+  const filteredProducts = allProducts.filter(p =>
     p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      {/* Navbar */}
-      <nav className="w-full flex justify-center py-4 bg-[#232f3e] relative">
-        <div className="flex items-center w-full max-w-5xl px-4">
-          <span className="text-white font-bold text-xl flex items-center gap-2">
-            <span className="bg-white rounded-full w-6 h-6 inline-block mr-2" />
-            {t('storeCompanyName')}
-          </span>
-          <span className="ml-8 text-white text-md font-medium cursor-pointer">{t('storeProductsLink')}</span>
-          <div className="ml-auto flex items-center gap-4">
-            <span
-              className="text-white cursor-pointer"
-              onClick={() => setShowSearch((v) => !v)}
-            >
-              🔍
-            </span>
-            <span className="text-white cursor-pointer" onClick={() => navigate('/login')}>👤</span>
-            <span
-              className="text-white cursor-pointer"
-              onClick={() => navigate('/cart')}
-            >
-              🛒
-            </span>
-          </div>
-        </div>
-        {/* Search Bar Dropdown */}
-        {showSearch && (
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 w-full max-w-md bg-white shadow-lg rounded-lg p-4 z-50 flex flex-col gap-2">
-            <input
-              autoFocus
-              type="text"
-              placeholder={t('storeSearchPlaceholder')}
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-horizop-gold"
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-              onKeyDown={e => {
-                if (e.key === 'Escape') setShowSearch(false);
-              }}
-            />
-            <div className="mt-2">
-              {filteredProducts.length === 0 && (
-                <div className="text-gray-400 text-sm">{t('storeNoProductsFound')}</div>
-              )}
-              {filteredProducts.map(product => (
-                <div
-                  key={product.path}
-                  className="px-3 py-2 rounded hover:bg-horizop-gold hover:text-white cursor-pointer text-gray-800"
-                  onClick={() => {
-                    setShowSearch(false);
-                    setSearchTerm('');
-                    navigate(product.path);
-                  }}
-                >
-                  {product.name}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
-
       {/* Main Content */}
-      <main className="flex flex-col items-center flex-1 w-full px-4">
-        <h1 className="text-5xl font-light mt-12 mb-2">Store</h1>
-        <h2 className="text-2xl font-light mb-10 text-center">Horizop transforms ordinary charging into intelligent energy management.</h2>
-        <div className="flex flex-row gap-6 mb-16">
-          {/* HORIZOP SmartPlug Card with overlayed text */}
-          <Link to="/store/pulsar-plus" className="bg-gray-100 rounded-lg p-0 w-[420px] h-[500px] flex flex-col justify-between shadow-lg hover:scale-105 transition-transform cursor-pointer overflow-hidden relative group">
-            <div className="relative w-full h-full flex-1">
-              <img src="/images/smartplug.png" alt="HORIZOP SmartPlug" className="absolute inset-0 w-full h-full object-cover z-0" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-              <div className="relative z-20 flex flex-col h-full justify-end p-6">
-                <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-lg">HORIZOP SmartPlug</h3>
-                <p className="text-sm mb-4 text-white drop-shadow-lg bg-black/50 rounded p-2">
-                  {smartPlugDescription}
-                </p>
+      <main className="flex flex-col items-center flex-1 w-full px-4 bg-gradient-to-br from-horizop-ivory via-white to-horizop-gold/10 py-16">
+        <div className="max-w-4xl w-full text-center mb-12">
+          <h1 className="text-6xl font-serif font-extrabold text-horizop-navy mb-4 tracking-tight drop-shadow-lg">{t('store.title')}</h1>
+          <h2 className="text-2xl font-light text-horizop-navy/80 mb-2">{t('store.subtitle')}</h2>
+          <p className="text-lg text-horizop-navy/60">{t('store.description')}</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full mx-auto p-4">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.name}
+              onClick={() => {
+                // For all products, toggle description
+                product.setExpanded(!product.expanded);
+              }}
+              className="group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-gray-200 flex flex-col"
+            >
+              <div className="relative w-full h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-4">
+                <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain" />
+                <span className="absolute top-4 left-4 bg-horizop-gold text-horizop-navy font-bold px-4 py-1 rounded-full text-xs shadow z-20">{product.tag}</span>
+            </div>
+              <div className="p-6 flex-grow flex flex-col justify-between text-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2 truncate">{product.name}</h3>
+                  <p
+                    ref={product.ref}
+                    className={`text-gray-600 transition-all duration-500 ease-in-out overflow-hidden`}
+                    style={{
+                      maxHeight: product.expanded ? `${product.ref.current?.scrollHeight}px` : '0px',
+                    }}
+                  >
+                    {product.description}
+                  </p>
+                </div>
+                <div className="mt-6 flex flex-col space-y-3">
+                  <span className="text-3xl font-bold text-horizop-navy">${product.price.toFixed(2)}</span>
+                  {product.buttons}
+                </div>
               </div>
             </div>
-            <button className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 shadow hover:bg-gray-200 transition z-30"><span className="text-2xl">→</span></button>
-          </Link>
-          {/* HORIZOP FastPlug Card with overlayed text */}
-          <Link to="/store/accessories" className="bg-gray-100 rounded-lg p-0 w-[420px] h-[500px] flex flex-col justify-between shadow-lg hover:scale-105 transition-transform cursor-pointer overflow-hidden relative group">
-            <div className="relative w-full h-full flex-1">
-              <img src="/images/fastplug.png" alt="HORIZOP FastPlug" className="absolute inset-0 w-full h-full object-cover z-0" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-              <div className="relative z-20 flex flex-col h-full justify-end p-6">
-                <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-lg">HORIZOP FastPlug</h3>
-                <p className="text-sm mb-4 text-white drop-shadow-lg bg-black/50 rounded p-2">
-                  {fastPlugDescription}
-                </p>
-              </div>
-            </div>
-            <button className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 shadow hover:bg-gray-200 transition z-30"><span className="text-2xl">→</span></button>
-          </Link>
+          ))}
         </div>
       </main>
 

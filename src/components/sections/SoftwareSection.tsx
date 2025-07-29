@@ -2,24 +2,27 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Rocket, Cloud } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const SoftwareSection = () => {
-  const softwareData = [
-    {
+  const { t } = useTranslation();
+
+const softwareData = [
+  {
       icon: <Rocket size={40} className="text-horizop-gold" />,
-      title: "CHARGE DLM",
-      description: "We offer Dynamic Load Management (DLM) software that allows you to control the charging of several EVs simultaneously in less time using the available power more efficiently and balancing it between the EV chargers.",
+      title: t('software.dlmTitle'),
+      description: t('software.dlmDescription'),
       bgColor: "bg-horizop-ivory",
       image: '/images/freepik__a-vertical-electric-vehicle-charging-station__21097.png'
     },
     {
       icon: <Cloud size={40} className="text-horizop-gold" />,
-      title: "CHARGE HORIZON",
-      description: "Charge Horizon is a cloud-based platform for usage monitoring and reporting. It is designed to collect and store data from a specific set of EV chargers located in car parks, offices, and communal blocks.",
+      title: t('software.horizonTitle'),
+      description: t('software.horizonDescription'),
       bgColor: "bg-horizop-yellow",
       image: '/images/pexels-kevin-ku-92347-577585.jpg'
-    }
-  ];
+  }
+];
 
   return (
     <section className="py-16 px-4">
@@ -31,7 +34,7 @@ const SoftwareSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="heading-medium font-serif text-horizop-navy mb-4">Software</h2>
+          <h2 className="heading-medium font-serif text-horizop-navy mb-4">{t('software.title')}</h2>
           <div className="w-20 h-1 bg-horizop-gold mb-6 mx-auto rounded"></div>
         </motion.div>
 
@@ -53,18 +56,18 @@ const SoftwareSection = () => {
                 <p className="text-gray-600">{item.description}</p>
               </div>
 
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
                 className={`relative h-[300px] md:h-[400px] overflow-hidden ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
                 <img 
-                  src={item.image} 
+                    src={item.image} 
                   alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover"
-                />
-              </motion.div>
+                  />
+                </motion.div>
             </motion.div>
           ))}
         </div>

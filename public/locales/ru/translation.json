@@ -1,0 +1,641 @@
+{
+  "navigation": {
+    "products": "Продукты",
+    "homeChargers": "Домашние Зарядные Устройства",
+    "smartplug": "Smartplug",
+    "mobileCharger": "Мобильное Зарядное Устройство",
+    "businessSolutions": "Бизнес-решения",
+    "businessEVCharging": "Зарядка ЭМ для Бизнеса",
+    "businessSoftwareSolutions": "Программные Решения для Бизнеса",
+    "businessFastChargers": "Быстрые Зарядные Устройства для Бизнеса",
+    "fastplug": "FastPlug",
+    "softwareSolutions": "Программные Решения",
+    "appForEVDrivers": "Приложение для водителей ЭМ",
+    "businessPortal": "Бизнес-портал",
+    "moreProducts": "Больше Продуктов",
+    "accessories": "Аксессуары",
+    "forBusinesses": "Для Бизнеса",
+    "solutions": "Решения",
+    "caseStudies": "Кейсы",
+    "pricing": "Цены",
+    "domestic": "Для Дома",
+    "homeCharging": "Домашняя Зарядка",
+    "smartDevices": "Умные Устройства",
+    "support": "Поддержка",
+    "partner": "Партнер",
+    "partnerProgram": "Партнерская Программа",
+    "resources": "Ресурсы",
+    "contact": "Контакт",
+    "training": "Обучение",
+    "theApp": "Приложение",
+    "shopNow": "Купить"
+  },
+  "fastplugPage": {
+    "title": "Зарядное устройство постоянного тока HORIZOP FastPlug",
+    "tag": "Быстрое зарядное устройство постоянного тока | 350 кВт",
+    "features": "Характеристики",
+    "feat1": "Высокомощная зарядка постоянным током с выходной мощностью до 350 кВт",
+    "feat2": "Модульная конструкция для высокой эксплуатационной готовности и снижения затрат",
+    "feat3": "Встроенная система бесконтактных платежей RFID",
+    "feat4": "14-дюймовый цветной сенсорный экран с защитой от вандализма и читаемостью при дневном свете",
+    "feat5": "Может быть сконфигурирован как решение «мастер-сателлит»",
+    "quantity": "Количество",
+    "priceDisplay": "{{price}} ₽",
+    "currencyUSD": "USD",
+    "addToCart": "Добавить в корзину",
+    "learnMore": "Узнать больше",
+    "morePaymentOptions": "Другие способы оплаты",
+    "securePayment": "БЕЗОПАСНЫЙ ПЛАТЕЖ",
+    "assembledInUSA": "СОБРАНО В США",
+    "customerService": "КЛИЕНТСКАЯ СЛУЖБА В США",
+    "warranty": "3-ЛЕТНЯЯ ОГРАНИЧЕННАЯ ГАРАНТИЯ",
+    "modalTitle": "Изображение FastPlug",
+    "description": "Описание",
+    "descriptionContent": "Высокомощное зарядное устройство постоянного тока с выходной мощностью до 350 кВт, модульной конструкцией для надежности и экономической эффективности. Включает оплату по RFID, 14-дюймовый сенсорный экран с защитой от вандализма и поддерживает конфигурации «мастер-сателлит».",
+    "techSpecs": "Технические характеристики",
+    "techSpecsContent": {
+      "power": "Мощность зарядки: до 350 кВт",
+      "connector": "Тип разъема: CCS2, CHAdeMO",
+      "connectivity": "Связь: Ethernet, 4G, Wi-Fi",
+      "appSupport": "Поддержка приложений: iOS и Android"
+    },
+    "whatsIncluded": "Что включено",
+    "whatsIncludedContent": "Устройство FastPlug, руководство по установке и необходимое монтажное оборудование. Дополнительные компоненты для конфигурации «мастер-сателлит» продаются отдельно.",
+    "salesAndRefunds": "Продажи и возвраты",
+    "salesAndRefundsContent": "Пожалуйста, ознакомьтесь с нашими подробными правилами продаж и возвратов для получения информации о возвратах, обменах и сервисных соглашениях. Свяжитесь со службой поддержки для получения конкретных запросов.",
+    "warrantyInfo": "Гарантия",
+    "warrantyInfoContent": "На HORIZOP FastPlug предоставляется стандартная гарантия, покрывающая производственные дефекты и проблемы с производительностью при нормальных условиях эксплуатации. Доступны расширенные гарантийные опции."
+  },
+  "mobileChargerPage": {
+    "productTag": "Портативное зарядное устройство переменного тока | 7 кВт",
+    "productTitle": "Мобильное зарядное устройство HORIZOP",
+    "featuresTitle": "Характеристики",
+    "feature1": "Портативное зарядное устройство переменного тока мощностью 7 кВт с регулируемым током (6-32 А)",
+    "feature2": "Разъем типа 2 с прочным, устойчивым к погодным условиям кабелем длиной 5-10 м",
+    "feature3": "Интеллектуальные функции: планирование, удаленный мониторинг и балансировка нагрузки",
+    "feature4": "Расширенные функции безопасности, включая защиту УЗО и аварийную остановку",
+    "feature5": "Компактная конструкция со степенью защиты IP65 для использования на обочине и на открытом воздухе",
+    "quantityLabel": "Количество",
+    "priceDisplay": "{{price}} ₽",
+    "addToCartButton": "Добавить в корзину",
+    "learnMoreButton": "Узнать больше",
+    "morePaymentOptions": "Другие способы оплаты",
+    "securePayment": "БЕЗОПАСНЫЙ ПЛАТЕЖ",
+    "assembledInUSA": "СОБРАНО В США",
+    "customerService": "КЛИЕНТСКАЯ СЛУЖБА В США",
+    "warranty": "3-ЛЕТНЯЯ ОГРАНИЧЕННАЯ ГАРАНТИЯ",
+    "modalTitle": "Изображение мобильного зарядного устройства",
+    "descriptionLabel": "Описание",
+    "descriptionContent": "Мобильное зарядное устройство для электромобилей HORIZOP ENERGY 7 кВт — это компактное портативное решение с устойчивой к погодным условиям конструкцией и прочным кабелем длиной 5-10 м. Оно оснащено разъемами типа 2, регулируемым током (6-32 А) и поддерживает зарядку переменным током в режиме 2 или 3. Интеллектуальные функции включают планирование, удаленный мониторинг через приложение (Wi-Fi/Bluetooth) и балансировку нагрузки. Встроенные средства защиты охватывают перегрузку по току, напряжению, утечку, температуру и включают аварийную остановку, обеспечивая безопасное использование в любом месте.",
+    "specsLabel": "Технические характеристики",
+    "specsContent": {
+      "power": "Мощность зарядки: 7 кВт переменного тока",
+      "current": "Регулируемый ток: 6-32 А",
+      "connector": "Тип разъема: Тип 2",
+      "cable": "Длина кабеля: 5-10 м, устойчивый к погодным условиям",
+      "enclosure": "Степень защиты корпуса: IP65",
+      "display": "Дисплей: светодиодные индикаторы",
+      "app": "Управление через приложение: опционально (Wi-Fi/Bluetooth)",
+      "functions": "Интеллектуальные функции: таймер, балансировка нагрузки",
+      "safety": "Безопасность: УЗО, защита от перенапряжения, аварийная остановка",
+      "dimensions": "Размеры: компактный и портативный",
+      "weight": "Вес: легкая конструкция"
+    },
+    "includedLabel": "Что включено",
+    "includedContent": "Мобильное зарядное устройство со встроенным кабелем и разъемом, руководство пользователя и защитный чехол.",
+    "refundsLabel": "Продажи и возвраты",
+    "refundsContent": "Пожалуйста, ознакомьтесь с нашими подробными правилами продаж и возвратов для получения информации о возвратах и обменах. Свяжитесь со службой поддержки для получения конкретных запросов.",
+    "warrantyLabel": "Гарантия",
+    "warrantyContent": "На мобильное зарядное устройство HORIZOP распространяется стандартная гарантия на производственные дефекты и проблемы с производительностью. Доступны расширенные гарантийные опции."
+  },
+  "pulsarPlusPage": {
+    "title": "HORIZOP SmartPlug",
+    "tag": "Домашнее зарядное устройство переменного тока | 22 кВт",
+    "features": "Характеристики",
+    "feature1": "Простой и футуристический дизайн",
+    "feature2": "Встроенная система бесконтактных платежей RFID",
+    "feature3": "Удобное мобильное приложение для мониторинга зарядки",
+    "selectAmperage": "Выберите силу тока",
+    "amperage40": "40А",
+    "amperage48": "48А",
+    "quantity": "Количество",
+    "priceDisplay": "{{price}} ₽",
+    "addToCart": "Добавить в корзину",
+    "requestQuote": "Запросить расчет",
+    "pricesExcludeVat": "Цены указаны без учета НДС.",
+    "morePaymentOptions": "Другие способы оплаты",
+    "securePayment": "БЕЗОПАСНЫЙ ПЛАТЕЖ",
+    "assembledInUSA": "СОБРАНО В США",
+    "customerService": "КЛИЕНТСКАЯ СЛУЖБА В США",
+    "warranty": "3-ЛЕТНЯЯ ОГРАНИЧЕННАЯ ГАРАНТИЯ",
+    "description": "Описание",
+    "descriptionContent": "HORIZOP SmartPlug предлагает простой и футуристический дизайн для современных домов. Простой процесс установки подкреплен стандартной 3-летней гарантией, обеспечивающей душевное спокойствие.",
+    "techSpecs": "Технические характеристики",
+    "techSpecsContent": "Основные характеристики включают выходную мощность до 22 кВт для 3-фазной зарядки переменным током и до 7,4 кВт для 1-фазной зарядки переменным током. Он оснащен встроенной системой бесконтактных платежей RFID и удобным мобильным приложением для мониторинга.",
+    "whatsIncluded": "Что включено",
+    "whatsIncludedContent": "В комплект входит зарядное устройство HORIZOP SmartPlug, монтажное оборудование и руководство пользователя. Все необходимое для простой установки включено.",
+    "salesAndRefunds": "Продажи и возвраты",
+    "salesAndRefundsContent": "Мы предлагаем комплексную политику продаж и возвратов. Пожалуйста, ознакомьтесь с нашими условиями для получения подробной информации о возвратах и обменах.",
+    "warrantyInfo": "Гарантия",
+    "warrantyInfoContent": "На HORIZOP SmartPlug предоставляется стандартная 3-летняя гарантия, покрывающая производственные дефекты и неисправности при нормальном использовании."
+  },
+  "landing": {
+    "title": "Возьмите всё под контроль",
+    "subtitle": "Выберите ваш язык",
+    "searchPlaceholder": "Поиск языков...",
+    "noResults": "Языки, соответствующие вашему поиску, не найдены.",
+    "continue": "Продолжить",
+    "selectCountry": "Выберите страну",
+    "selectLanguage": "Затем язык",
+    "selectionInfo": "Выбранные вами страна и язык будут сохранены для будущих визитов.",
+    "worldRegions": "Регионы мира",
+    "selectRegion": "Выберите регион",
+    "selectCountryPlaceholder": "Выберите страну",
+    "selectRegionFirst": "Сначала выберите регион",
+    "selectLanguagePlaceholder": "Выберите язык",
+    "selectCountryFirst": "Сначала выберите страну"
+  },
+  "home": {
+    "hero": {
+      "title": "Horizop Energy",
+      "subtitle": "установщики и дистрибьюторы",
+      "description": "Наши решения. Ваш опыт. Лучшая зарядка электромобилей для всех.",
+      "cta": "Присоединяйтесь к нашей партнерской программе"
+    },
+    "installerSection": {
+      "title": "Зачем присоединяться к нашей сети установщиков?",
+      "getCertified": {
+        "title": "Получите сертификат",
+        "description": "Пройдите наше обучение и узнайте все, что нужно для установки зарядных устройств переменного тока Horizop Energy."
+      },
+      "startInstalling": {
+        "title": "Начните установку",
+        "description": "Получите доступ к инструментам, поддержке и маркетинговым материалам."
+      },
+      "levelUp": {
+        "title": "Повышайте уровень",
+        "description": "Чем больше зарядных устройств вы устанавливаете, тем больше преимуществ вы получаете."
+      },
+      "freeCertification": {
+        "title": "Бесплатная сертификация",
+        "description": "Зарегистрируйтесь, получите сертификат и станьте сертифицированным установщиком Horizop Energy."
+      }
+    },
+    "distributorSection": {
+      "title": "Зачем присоединяться к нашей дистрибьюторской сети?",
+      "subtitle": "Наслаждайтесь преимуществами",
+      "expandedPortfolio": {
+        "title": "Расширенное портфолио продуктов",
+        "description": "Как дистрибьютор Horizop Energy, вы получаете доступ к нашему полному ассортименту инновационных решений для зарядки электромобилей, от домашних зарядных устройств до коммерческих установок большой мощности. Это позволяет вам предлагать своим клиентам комплексную линейку продуктов, удовлетворяя разнообразные потребности и захватывая большую долю быстрорастущего рынка электромобилей."
+      },
+      "strongPartnership": {
+        "title": "Прочное партнерство и поддержка",
+        "description": "Мы инвестируем в успех наших дистрибьюторов. Вы получите специальную поддержку по продажам и маркетингу, углубленное обучение по продуктам и доступ к нашим техническим экспертам. Мы тесно сотрудничаем с вами для разработки индивидуальных стратегий для вашего рынка, обеспечивая вас ресурсами и знаниями для процветания в конкурентной индустрии зарядки электромобилей."
+      }
+    }
+  },
+  "products": {
+    "smartplug": {
+      "title": "Smartplug",
+      "description": "Умное решение для домашней зарядки электромобилей"
+    },
+    "mobileCharger": {
+      "title": "Мобильное зарядное устройство",
+      "description": "Портативное решение для зарядки электромобилей"
+    },
+    "fastplug": {
+      "title": "FastPlug",
+      "description": "Высокоскоростная коммерческая зарядка"
+    },
+    "pulsarPlus": {
+      "title": "Pulsar Plus",
+      "description": "Передовая домашняя зарядная станция"
+    }
+  },
+  "store": {
+    "title": "Наши продукты",
+    "subtitle": "Премиальные решения для зарядки электромобилей для любых нужд",
+    "description": "Ознакомьтесь с нашим тщательно подобранным ассортиментом домашних и коммерческих зарядных устройств, станций быстрой зарядки и необходимых аксессуаров. Разработано для производительности, надежности и стиля.",
+    "buyButton": "Купить",
+    "learnMoreButton": "Узнать больше",
+    "homeTag": "Дом",
+    "businessTag": "Бизнес",
+    "mobileTag": "Мобильный",
+    "accessoryTag": "Аксессуар",
+    "smartPlugTitle": "HORIZOP SmartPlug",
+    "smartPlugDescription": "Изящное, простое в установке зарядное устройство для электромобилей мощностью до 22 кВт, с оплатой по RFID и управлением через приложение. Совместимо с солнечными системами и поддерживает двунаправленную зарядку. Включает светодиодный индикатор состояния и 3-летнюю гарантию.",
+    "fastPlugTitle": "HORIZOP FastPlug",
+    "fastPlugDescription": "Мощное зарядное устройство постоянного тока мощностью до 350 кВт, модульная конструкция для надежности и экономической эффективности. Оснащено оплатой по RFID, 14-дюймовым антивандальным сенсорным экраном и поддержкой конфигураций Master-Satellite.",
+    "mobileChargerTitle": "Мобильное зарядное устройство HORIZOP",
+    "mobileChargerDescription": "Портативное мобильное зарядное устройство переменного тока мощностью 7 кВт с регулируемым током (6–32 А), разъемом типа 2 и погодоустойчивым кабелем длиной до 10 м. Оснащено светодиодным дисплеем, опциональным управлением через приложение, интеллектуальными функциями, такими как таймер и балансировка нагрузки, а также передовыми системами безопасности, включая защиту УЗО, контроль перенапряжения и аварийную остановку. Компактный дизайн с классом защиты IP65, идеально подходит для использования в дороге и на открытом воздухе.",
+    "cable1Name": "Зарядный кабель для электромобиля (тип 1)",
+    "cable1Feat1": "Совместим с автомобилями типа 1",
+    "cable1Feat2": "Высококачественный прочный кабель",
+    "cable1Feat3": "Быстрая и эффективная зарядка",
+    "cable1Feat4": "Погодоустойчивая конструкция",
+    "cable2Name": "Зарядный кабель для электромобиля (тип 2)",
+    "cable2Feat1": "Совместим с автомобилями типа 2",
+    "cable2Feat2": "Гибкая и прочная конструкция",
+    "cable2Feat3": "Оптимальная производительность зарядки",
+    "cable2Feat4": "Эргономичная рукоятка",
+    "cable3Name": "Зарядный кабель для электромобиля (тип 3)",
+    "cable3Feat1": "Совместим с автомобилями типа 3",
+    "cable3Feat2": "Передовые функции безопасности",
+    "cable3Feat3": "Долговечный материал",
+    "cable3Feat4": "Разработано для удобства",
+    "cable4Name": "Зарядный кабель для электромобиля (тип 4)",
+    "cable4Feat1": "Совместим с автомобилями типа 4",
+    "cable4Feat2": "Сверхпрочная конструкция",
+    "cable4Feat3": "Надежное и безопасное соединение",
+    "cable4Feat4": "Портативный дизайн",
+    "compactChargerName": "Compact EV Charger",
+    "compactChargerFeat1": "Sleek and compact design",
+    "compactChargerFeat2": "Easy to install",
+    "compactChargerFeat3": "High power output",
+    "compactChargerFeat4": "Smart charging capabilities",
+    "compactChargerFeat5": "Overload protection"
+  },
+  "loginPage": {
+    "title": "Join Horizop Energy",
+    "subtitle": "Log in or create an account to get started.",
+    "existingCustomersTitle": "Existing customers",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your e-mail address here",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password here",
+    "loginButton": "Log in",
+    "forgotPasswordLink": "Password?",
+    "newCustomersTitle": "New to Horizop Energy?",
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "Your first name",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Your last name",
+    "newEmailLabel": "Email",
+    "newEmailPlaceholder": "Your e-mail address",
+    "professionLabel": "Profession",
+    "professionPlaceholder": "Select your profession",
+    "professionInstaller": "Installer",
+    "professionDistributor": "Distributor",
+    "professionFinancial": "Financial Customer",
+    "installerCertLabel": "Installer Certification Number",
+    "installerCertPlaceholder": "e.g., HEIC-12345",
+    "installerAreaLabel": "Primary Service Area (Zip Codes/Cities)",
+    "installerAreaPlaceholder": "e.g., 90210, Los Angeles",
+    "installerExpLabel": "Years of Experience in EV Charging Installation",
+    "installerExpPlaceholder": "e.g., 5",
+    "distributorRegionLabel": "Primary Distribution Region",
+    "distributorRegionPlaceholder": "e.g., North America, Europe",
+    "distributorSalesLabel": "Estimated Annual Sales Volume",
+    "distributorSalesPlaceholder": "e.g., $500,000+",
+    "distributorClientsLabel": "Current Number of Active Clients",
+    "distributorClientsPlaceholder": "e.g., 50",
+    "financialInterestLabel": "Area of Interest",
+    "financialInterestPlaceholder": "e.g., Public Charging Infrastructure",
+    "financialCapitalLabel": "Estimated Investment Capital",
+    "financialCapitalPlaceholder": "e.g., $1,000,000+",
+    "financialContactLabel": "Preferred Contact Method for Financial Discussions",
+    "financialContactPlaceholder": "Select preferred method",
+    "financialContactEmail": "Email",
+    "financialContactPhone": "Phone Call",
+    "financialContactVideo": "Video Conference",
+    "registerButton": "Register Now"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyMessage": "Start shopping to add products to your cart!",
+    "backToStore": "Back to Store",
+    "removeButton": "Remove",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "shippingFree": "Free",
+    "total": "Total",
+    "continueToOrder": "Continue to order",
+    "continueShopping": "Continue shopping",
+    "amperage": "Amperage",
+    "output": "Output",
+    "smartplug_feat1": "Up to 22kW for 3-phase AC charging",
+    "smartplug_feat2": "RFID payment system & mobile app control",
+    "smartplug_feat3": "Solar PV compatible & bidirectional charging",
+    "smartplug_feat4": "3-year warranty included",
+    "fastplug_feat1": "Ultra-fast DC charging up to 350kW",
+    "fastplug_feat2": "14\" anti-vandal touchscreen display",
+    "fastplug_feat3": "Master-Satellite configuration support",
+    "fastplug_feat4": "Modular design for high uptime",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logout": "Logout"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "close": "Close",
+    "open": "Open",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK"
+  },
+  "footer": {
+    "title": "EV Charging and Energy Management",
+    "subtitle": "Leading the charge towards a sustainable future.",
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "careers": "Careers",
+      "press": "Press",
+      "partners": "Partners"
+    },
+    "products": {
+      "title": "Products",
+      "home": "Home Charging",
+      "business": "Business Charging",
+      "software": "Software",
+      "accessories": "Accessories"
+    },
+    "support": {
+      "title": "Support",
+      "contact": "Contact Us",
+      "faq": "FAQ",
+      "documentation": "Documentation",
+      "troubleshooting": "Troubleshooting"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookie": "Cookie Policy"
+    },
+    "newsletter": {
+      "title": "Subscribe to our Newsletter",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    },
+    "copyright": "© 2024 Horizop Energy. All rights reserved."
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Ой! Страница не найдена",
+    "homeLink": "Вернуться на главную"
+  },
+  "whoWeAre": {
+    "title": "Кто мы",
+    "description": "HORIZOP ENERGY поставляет сложные программные решения и всесторонние аналитические данные по энергетике, которые способствуют устойчивому переходу для предприятий и сообществ по всему миру.",
+    "learnMore": "Узнать больше на LinkedIn",
+    "missionTitle": "Наша миссия",
+    "missionDescription": "Наша миссия — ускорить глобальный переход к устойчивой энергетике, предоставляя инновационные и доступные решения для зарядки электромобилей.",
+    "visionTitle": "Наше видение",
+    "visionDescription": "Быть ведущей силой в будущем энергетики, расширяя возможности отдельных лиц и предприятий с помощью интеллектуальных, эффективных и экологически сознательных технологий.",
+    "coreValues": "Основные ценности",
+    "innovationTitle": "Инновации",
+    "innovationDescription": "Продвижение инноваций с помощью передовых технологий и творческих решений.",
+    "sustainabilityTitle": "Устойчивое развитие",
+    "sustainabilityDescription": "Стремление к созданию устойчивого будущего с помощью зеленых энергетических решений.",
+    "collaborationTitle": "Сотрудничество",
+    "collaborationDescription": "Партнерство с предприятиями и сообществами для взаимного роста и успеха."
+  },
+  "partner": {
+    "collaboration": "Сотрудничество",
+    "title": "Стать партнером",
+    "description": "Сотрудничайте с HORIZOP ENERGY для внедрения инноваций и повышения эффективности ваших энергетических операций. Наш опыт в разработке программного обеспечения и энергетических систем создает мощные решения для вызовов завтрашнего дня.",
+    "portalButton": "Войти в партнерский портал",
+    "dashboardTitle": "Разработка пользовательских панелей мониторинга",
+    "dashboardDescription": "Интерактивные панели для мониторинга энергии в реальном времени и получения аналитических данных.",
+    "dataTitle": "Решения для данных об энергии",
+    "dataDescription": "Продвинутая аналитика данных для оптимизации потребления и производства энергии.",
+    "predictiveTitle": "Прогнозная аналитика",
+    "predictiveDescription": "Прогнозирование на основе искусственного интеллекта для предвидения потребностей в энергии и тенденций рынка.",
+    "engineeringTitle": "Индивидуальная разработка программного обеспечения",
+    "engineeringDescription": "Индивидуальные программные решения для конкретных задач управления энергией.",
+    "results": "Результаты",
+    "successStories": "Истории успеха",
+    "caseStudy1Title": "Пример использования: Интеграция возобновляемых источников энергии",
+    "caseStudy1Client": "Крупный поставщик коммунальных услуг",
+    "caseStudy1Description": "Разработана пользовательская панель мониторинга и платформа для анализа данных для интеграции и мониторинга возобновляемых источников энергии, что привело к повышению эффективности сети и снижению эксплуатационных расходов.",
+    "caseStudy2Title": "Пример использования: Оптимизация потребления энергии",
+    "caseStudy2Client": "Производственный консорциум",
+    "caseStudy2Description": "Внедрено решение для прогнозной аналитики для оптимизации потребления энергии на производственных предприятиях, что привело к значительной экономии энергии и сокращению углеродного следа.",
+    "readCaseStudy": "Прочитать пример использования",
+    "client": "Клиент",
+    "ctaTitle": "Готовы преобразовать свои энергетические операции?",
+    "ctaDescription": "Давайте обсудим, как наши решения могут удовлетворить ваши конкретные потребности.",
+    "ctaButton": "Запросить консультацию"
+  },
+  "software": {
+    "title": "Программное обеспечение",
+    "dlmTitle": "CHARGE DLM",
+    "dlmDescription": "Мы предлагаем программное обеспечение Dynamic Load Management (DLM), которое позволяет вам управлять зарядкой нескольких электромобилей одновременно за меньшее время, более эффективно используя доступную мощность и распределяя ее между зарядными устройствами для электромобилей.",
+    "horizonTitle": "CHARGE HORIZON",
+    "horizonDescription": "Charge Horizon — это облачная платформа для мониторинга использования и отчетности. Она предназначена для сбора и хранения данных с определенного набора зарядных устройств для электромобилей, расположенных на парковках, в офисах и жилых комплексах."
+  },
+  "productsSection": {
+    "title": "Our Products",
+    "description": "Premium EV Charging Solutions for Every Need",
+    "homeTag": "Home",
+    "businessTag": "Business",
+    "mobileTag": "Mobile",
+    "smartplugTitle": "HORIZOP SmartPlug",
+    "smartplugDescription": "A sleek, easy-to-install EV charger with up to 22kW output, RFID payment, and app control. Compatible with solar systems and supports bidirectional charging. Includes LED status indicator and a 3-year warranty.",
+    "fastplugTitle": "HORIZOP FastPlug DC Charger",
+    "fastplugDescription": "High-power DC charger with up to 350kW output, modular design for reliability and cost-efficiency. Features RFID payment, a 14\" anti-vandal touchscreen, and supports Master-Satellite configurations.",
+    "mobileChargerTitle": "HORIZOP Mobile Charger",
+    "mobileChargerDescription": "Portable 7kW AC mobile charger with adjustable current (6–32A), Type 2 connector, and up to 10m weatherproof cable. Features LED display, optional app control, smart functions like timer and load balancing, and advanced safety systems including RCD protection, surge control, and emergency stop. Compact, IP65-rated design ideal for roadside and outdoor use.",
+    "learnMore": "Learn More"
+  },
+  "contact": {
+    "tag": "Контакты",
+    "title": "Свяжитесь с нами",
+    "description": "Мы будем рады услышать от вас! Если у вас есть вопрос о наших продуктах, решениях для вашего бизнеса или вы просто хотите поздороваться, не стесняйтесь обращаться к нам.",
+    "formTitle": "Отправьте нам сообщение",
+    "fullNameLabel": "Полное имя",
+    "fullNamePlaceholder": "Ваше имя",
+    "emailLabel": "Электронная почта",
+    "emailPlaceholder": "Ваша электронная почта",
+    "companyLabel": "Компания",
+    "companyPlaceholder": "Ваша компания (необязательно)",
+    "messageLabel": "Сообщение",
+    "messagePlaceholder": "Ваше сообщение",
+    "submitButton": "Отправить сообщение",
+    "infoTitle": "Контактная информация",
+    "infoEmailTitle": "Электронная почта",
+    "infoPhoneTitle": "Телефон",
+    "infoAddressTitle": "Основной адрес"
+  },
+  "smartplugPage": {
+    "heroTitle": "SmartPlug",
+    "section1Title": "Мощность — это только начало",
+    "acButton": "Зарядка переменного тока",
+    "homeButton": "Домашняя зарядка",
+    "section1Description": "Встречайте Horziop SmartPlug — изящное зарядное решение нового поколения, созданное как для новичков, так и для энтузиастов электромобилей.<br />Невероятно простое, но оснащенное интеллектуальными функциями, оно обеспечивает плавный и мощный опыт зарядки.<br />Просто подключите — и управляйте будущим.",
+    "forHome": "Для дома",
+    "section2Title": "Оптимизируйте свой опыт зарядки",
+    "section2Description": "Выберите решение, которое соответствует вашему образу жизни. HORIZOP SmartPlug обеспечивает бесшовную установку и интеллектуальную зарядку электромобилей, адаптированную к вашим энергетическим потребностям.",
+    "priceLabel": "От",
+    "buyButton": "Купить",
+    "learnMoreButton": "Узнать больше",
+    "techSpecsTitle": "Технические характеристики",
+    "wirelessLabel": "Беспроводная связь:",
+    "wirelessValue": "Bluetooth v4.2 + BLE",
+    "enclosureLabel": "Класс защиты корпуса:",
+    "enclosureValue": "IP54 / IK10*"
+  },
+  "partnerProgram": {
+    "header": {
+      "title": "Become a Partner",
+      "subtitle": "Join our network of installers and distributors to grow your business with Horizop Energy's leading EV charging solutions.",
+      "cta": "Apply Now"
+    },
+    "whyPartner": {
+      "title": "Why Partner with Horizop Energy?",
+      "installers": {
+        "title": "For Installers",
+        "description": "Access our full range of AC chargers, get certified through our training programs, and receive dedicated support to ensure seamless installations.",
+        "points": [
+          "Comprehensive training and certification",
+          "Access to marketing materials and sales leads",
+          "Technical support from our expert team",
+          "Competitive pricing and attractive margins"
+        ]
+      },
+      "distributors": {
+        "title": "For Distributors",
+        "description": "Expand your product portfolio with our innovative EV charging solutions and benefit from our strong brand reputation and marketing support.",
+        "points": [
+          "Full range of AC and DC charging products",
+          "Dedicated account management and sales support",
+          "Co-marketing opportunities and event support",
+          "Logistical support and streamlined ordering process"
+        ]
+      }
+    },
+    "howToJoin": {
+      "title": "How to Join",
+      "step1": "Submit your application through our online portal.",
+      "step2": "Our partnership team will review your application.",
+      "step3": "Complete our certification and onboarding process.",
+      "step4": "Start growing your business with Horizop Energy."
+    },
+    "applicationForm": {
+      "title": "Partner Application Form",
+      "companyName": "Company Name",
+      "companyWebsite": "Company Website",
+      "contactName": "Contact Name",
+      "contactEmail": "Contact Email",
+      "contactPhone": "Contact Phone",
+      "partnerType": "I am interested in being a:",
+      "installer": "Installer",
+      "distributor": "Distributor",
+      "comments": "Comments",
+      "submit": "Submit Application"
+    }
+  },
+  "quoteRequest": {
+    "title": "Request a Quote",
+    "subtitle": "Get a customized quote for your EV charging project. Fill out the form below and one of our experts will get in touch with you shortly.",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company (Optional)",
+      "projectType": "Project Type",
+      "home": "Home Installation",
+      "business": "Business/Commercial",
+      "public": "Public Charging Network",
+      "chargersNeeded": "Number of Chargers Needed",
+      "installationAddress": "Installation Address",
+      "additionalInfo": "Additional Information",
+      "submit": "Submit Request"
+    },
+    "success": {
+      "title": "Thank you!",
+      "message": "Your quote request has been received. Our team will review your information and get back to you soon.",
+      "backHome": "Back to Home"
+    }
+  },
+  "solutions": {
+    "title": "Solutions for Every Need",
+    "subtitle": "Whether you're an EV driver, a business owner, or a property manager, Horizop Energy has the right charging solution for you.",
+    "home": {
+      "title": "Home Charging",
+      "description": "Charge your EV overnight with our smart, compact, and easy-to-use home chargers. Wake up to a full battery every day."
+    },
+    "business": {
+      "title": "Business Charging",
+      "description": "Attract and retain customers and employees by offering EV charging at your workplace, retail location, or hospitality venue."
+    },
+    "public": {
+      "title": "Public Charging",
+      "description": "Deploy reliable and scalable charging networks in public spaces, cities, and along highways with our DC fast chargers and management software."
+    },
+    "fleets": {
+      "title": "Fleet Charging",
+      "description": "Optimize your fleet operations with our smart charging solutions that minimize energy costs and ensure your vehicles are always ready to go."
+    }
+  },
+  "training": {
+    "title": "Installer Training & Certification",
+    "subtitle": "Become a certified installer of Horizop Energy products and gain the skills and knowledge to deliver excellence to your customers.",
+    "introduction": {
+      "title": "Introduction to EV Charging",
+      "description": "Learn the fundamentals of electric vehicle charging, including charging levels, connector types, and safety standards."
+    },
+    "ac_chargers": {
+      "title": "AC Charger Installation",
+      "description": "A comprehensive course on installing our range of AC chargers, including site assessment, electrical requirements, and commissioning."
+    },
+    "dc_chargers": {
+      "title": "DC Fast Charger Installation",
+      "description": "An advanced course for experienced electricians on the installation and maintenance of our high-power DC fast chargers."
+    },
+    "software": {
+      "title": "Software & Networking",
+      "description": "Get trained on our charge point management software, including network configuration, user management, and remote troubleshooting."
+    },
+    "enroll": {
+      "title": "Enroll in a Training Session",
+      "description": "Check our schedule for upcoming online and in-person training sessions and book your spot.",
+      "button": "View Schedule"
+    }
+  },
+  "theApp": {
+    "title": "The Horizop Energy App",
+    "subtitle": "The ultimate tool for a seamless charging experience.",
+    "download": {
+      "title": "Download the App",
+      "apple": "Download on the App Store",
+      "google": "Get it on Google Play"
+    },
+    "features": {
+      "find": "Find chargers near you",
+      "start": "Start and stop charging sessions",
+      "monitor": "Monitor your charging status in real-time",
+      "history": "View your charging history and expenses",
+      "pay": "Pay securely within the app"
+    }
+  }
+} 

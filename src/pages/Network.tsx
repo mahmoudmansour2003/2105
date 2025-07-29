@@ -115,15 +115,14 @@ const Network = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="text-center bg-horizop-navy py-16 px-4"
             >
-              <h2 className="text-3xl font-serif font-bold text-horizop-yellow mb-4">{t('networkBecomePartnerTitle')}</h2>
+              <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('networkBecomePartnerTitle')}</h2>
               <p className="text-white mb-8 max-w-2xl mx-auto">
                 {t('networkBecomePartnerDescription')}
               </p>
-              <Button className="bg-horizop-yellow text-horizop-navy hover:bg-horizop-gold px-8 py-6 text-lg">
-                <UserPlus className="mr-2" />
-                {t('networkApplyNowButton')}
+              <Button className="bg-white text-horizop-navy hover:bg-gray-200 px-8 py-3 text-lg inline-flex items-center">
+                Join the program <span className="ml-2">→</span>
               </Button>
             </motion.div>
           </div>

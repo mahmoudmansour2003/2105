@@ -14,23 +14,417 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ===== USER MANAGEMENT =====
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String
-  password  String
-  role      Role     @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  devices   Device[]
-  readings  EnergyReading[]
+  id                Int                @id @default(autoincrement())
+  email             String             @unique
+  firstName         String
+  lastName          String
+  password          String
+  role              String             @default("CUSTOMER")
+  phone             String?
+  addressId         Int?
+  isEmailVerified   Boolean            @default(false)
+  isPhoneVerified   Boolean            @default(false)
+  profileImage      String?
+  preferences       String?            // JSON stored as string
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  
+  // Relations
+  orders            Order[]
+  reviews           Review[]
+  chargingSessions  ChargingSession[]
+  devices           Device[]
+  readings          EnergyReading[]
+  partnerProfile    PartnerProfile?
+  installerProfile  InstallerProfile?
+  distributorProfile DistributorProfile?
+  financialProfile  FinancialProfile?
+  notifications     Notification[]
+  supportTickets    SupportTicket[]
+  address           Address[]
+  installations     Installation[]
 }
 
+model Address {
+  id          Int      @id @default(autoincrement())
+  userId      Int?
+  user        User?    @relation(fields: [userId], references: [id])
+  street      String
+  city        String
+  state       String
+  postalCode  String
+  country     String
+  isDefault   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== PRODUCTS & INVENTORY =====
+model Product {
+  id              Int               @id @default(autoincrement())
+  name            String
+  sku             String            @unique
+  description     String
+  shortDescription String?
+  price           Float
+  salePrice       Float?
+  costPrice       Float
+  category        String
+  type            String
+  brand           String            @default("HORIZOP")
+  model           String?
+  powerOutput     String?           // e.g., "22kW", "350kW"
+  connectorType   String?           // e.g., "Type 2", "CCS", "CHAdeMO"
+  dimensions      String?           // e.g., "100x180x350mm"
+  weight          Float?            // in kg
+  warranty        Int?              // warranty period in months
+  stockQuantity   Int               @default(0)
+  minStockLevel   Int               @default(5)
+  isActive        Boolean           @default(true)
+  isFeatured      Boolean           @default(false)
+  tags            String?           // Comma-separated tags
+  specifications  String?           // JSON stored as string
+  images          ProductImage[]
+  variants        ProductVariant[]
+  orderItems      OrderItem[]
+  reviews         Review[]
+  installations   Installation[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model ProductImage {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  altText   String?
+  isPrimary Boolean  @default(false)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model ProductVariant {
+  id         Int         @id @default(autoincrement())
+  productId  Int
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name       String      // e.g., "40A", "48A"
+  sku        String      @unique
+  price      Float
+  stock      Int         @default(0)
+  isActive   Boolean     @default(true)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  orderItems OrderItem[]
+}
+
+// ===== ORDERS & E-COMMERCE =====
+model Order {
+  id                Int           @id @default(autoincrement())
+  orderNumber       String        @unique
+  userId            Int
+  user              User          @relation(fields: [userId], references: [id])
+  status            String        @default("PENDING")
+  subtotal          Float
+  tax               Float         @default(0)
+  shipping          Float         @default(0)
+  discount          Float         @default(0)
+  total             Float
+  currency          String        @default("USD")
+  shippingAddress   String? // JSON stored as string
+  billingAddress    String? // JSON stored as string
+  paymentMethod     String?
+  paymentStatus     String        @default("PENDING")
+  notes             String?
+  estimatedDelivery DateTime?
+  deliveredAt       DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  
+  // Relations
+  items     OrderItem[]
+  payments  Payment[]
+  shipments Shipment[]
+  PartnerOrder PartnerOrder[]
+}
+
+model OrderItem {
+  id          Int      @id @default(autoincrement())
+  orderId     Int
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   Int
+  product     Product  @relation(fields: [productId], references: [id])
+  variantId   Int?
+  variant     ProductVariant? @relation(fields: [variantId], references: [id])
+  quantity    Int
+  unitPrice   Float
+  totalPrice  Float
+  createdAt   DateTime @default(now())
+}
+
+model Payment {
+  id            Int           @id @default(autoincrement())
+  orderId       Int
+  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount        Float
+  method        String
+  status        String
+  transactionId String?       @unique
+  gateway       String?       // e.g., "stripe", "paypal"
+  gatewayData   String?       // JSON stored as string
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Shipment {
+  id              Int           @id @default(autoincrement())
+  orderId         Int
+  order           Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  trackingNumber  String?       @unique
+  carrier         String?       // e.g., "FedEx", "UPS"
+  status          String        @default("PENDING")
+  shippedAt       DateTime?
+  deliveredAt     DateTime?
+  trackingUrl     String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+// ===== CHARGING INFRASTRUCTURE =====
+model ChargingStation {
+  id              Int                @id @default(autoincrement())
+  name            String
+  stationId       String             @unique
+  type            String
+  powerOutput     Float              // in kW
+  connectorTypes  String             // Comma-separated types
+  location        String             // JSON stored as string
+  status          String             @default("ACTIVE")
+  isPublic        Boolean            @default(true)
+  ownerId         Int?               // If owned by a partner
+  owner           PartnerProfile?    @relation(fields: [ownerId], references: [id])
+  pricePerKwh     Float?
+  currency        String             @default("USD")
+  availability    String?            // JSON stored as string
+  amenities       String?            // Comma-separated amenities
+  images          String?            // Comma-separated image URLs
+  specifications  String?            // JSON stored as string
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  
+  // Relations
+  sessions        ChargingSession[]
+  maintenance     MaintenanceRecord[]
+}
+
+model ChargingSession {
+  id              Int                   @id @default(autoincrement())
+  sessionId       String                @unique
+  userId          Int
+  user            User                  @relation(fields: [userId], references: [id])
+  stationId       Int
+  station         ChargingStation       @relation(fields: [stationId], references: [id])
+  startTime       DateTime
+  endTime         DateTime?
+  energyDelivered Float? // in kWh
+  duration        Int? // in minutes
+  cost            Float?
+  status          String                @default("ACTIVE")
+  paymentMethod   String?
+  paymentStatus   String                @default("PENDING")
+  vehicleInfo     String? // JSON stored as string
+  notes           String?
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+}
+
+// ===== PARTNER NETWORK =====
+model PartnerProfile {
+  id                Int               @id @default(autoincrement())
+  userId            Int               @unique
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName       String
+  companyType       String
+  businessNumber    String?           @unique
+  website           String?
+  description       String?
+  logo              String?
+  address           String?           // JSON stored as string
+  contactPerson     String?
+  phone             String?
+  email             String?
+  status            String            @default("PENDING")
+  certification     String?           // Certification number
+  serviceAreas      String?           // Comma-separated areas
+  specialties       String?           // Comma-separated specialties
+  yearsExperience   Int?
+  annualRevenue     Float?
+  employeeCount     Int?
+  certifications    String?           // Comma-separated certifications
+  insurance         String?           // JSON stored as string
+  references        String?           // JSON stored as string
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  // Relations
+  chargingStations  ChargingStation[]
+  installations     Installation[]
+  orders            PartnerOrder[]
+}
+
+model PartnerOrder {
+  id         Int      @id @default(autoincrement())
+  partnerId  Int
+  partner    PartnerProfile @relation(fields: [partnerId], references: [id])
+  orderId    Int
+  order      Order    @relation(fields: [orderId], references: [id])
+  commission Float
+  status     String   @default("PENDING") // PENDING, PAID, CANCELLED
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model InstallerProfile {
+  id                Int               @id @default(autoincrement())
+  userId            Int               @unique
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  certification     String?           @unique
+  serviceArea       String?
+  experience        Int?              // Years of experience
+  specialties       String?           // Comma-separated specialties
+  availability      String?           // JSON stored as string
+  hourlyRate        Float?
+  rating            Float?            @default(0)
+  totalInstallations Int              @default(0)
+  isAvailable       Boolean           @default(true)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  // Relations
+  installations     Installation[]
+}
+
+model DistributorProfile {
+  id                Int               @id @default(autoincrement())
+  userId            Int               @unique
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName       String
+  region            String?
+  annualSales       Float?
+  clientCount       Int?
+  productLines      String?           // Comma-separated product lines
+  warehouseLocation String?           // JSON stored as string
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model FinancialProfile {
+  id                 Int            @id @default(autoincrement())
+  userId             Int            @unique
+  user               User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  investmentInterest String?
+  capitalAvailable   Float?
+  preferredContact   String?
+  projectSize        String?
+  timeline           String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+}
+
+// ===== INSTALLATIONS & SERVICES =====
+model Installation {
+  id                Int               @id @default(autoincrement())
+  installationId    String            @unique
+  customerId        Int
+  customer          User              @relation(fields: [customerId], references: [id])
+  installerId       Int?
+  installer         InstallerProfile? @relation(fields: [installerId], references: [id])
+  partnerId         Int?
+  partner           PartnerProfile?   @relation(fields: [partnerId], references: [id])
+  productId         Int
+  product           Product           @relation(fields: [productId], references: [id])
+  status            String            @default("SCHEDULED")
+  scheduledDate     DateTime?
+  completedDate     DateTime?
+  location          String?           // JSON stored as string
+  specifications    String?           // JSON stored as string
+  cost              Float?
+  warranty          String?           // JSON stored as string
+  notes             String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model MaintenanceRecord {
+  id                Int               @id @default(autoincrement())
+  stationId         Int
+  station           ChargingStation   @relation(fields: [stationId], references: [id], onDelete: Cascade)
+  type              String
+  description       String
+  scheduledDate     DateTime?
+  completedDate     DateTime?
+  technician        String?
+  cost              Float?
+  status            String            @default("SCHEDULED")
+  notes             String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+// ===== REVIEWS & RATINGS =====
+model Review {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  productId Int?
+  product   Product? @relation(fields: [productId], references: [id])
+  rating    Int      // 1-5 stars
+  title     String?
+  comment   String?
+  isVerified Boolean @default(false)
+  isPublic  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ===== NOTIFICATIONS & SUPPORT =====
+model Notification {
+  id        Int              @id @default(autoincrement())
+  userId    Int
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  data      String?          // JSON stored as string
+  createdAt DateTime         @default(now())
+}
+
+model SupportTicket {
+  id          Int               @id @default(autoincrement())
+  ticketId    String            @unique
+  userId      Int
+  user        User              @relation(fields: [userId], references: [id])
+  subject     String
+  description String
+  priority    String            @default("MEDIUM")
+  status      String            @default("OPEN")
+  category    String
+  assignedTo  String?
+  resolution  String?
+  closedAt    DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+// ===== LEGACY MODELS (keeping for compatibility) =====
 model Device {
   id          Int            @id @default(autoincrement())
   name        String
-  type        DeviceType
-  status      DeviceStatus   @default(ACTIVE)
+  type        String
+  status      String   @default("ACTIVE")
   userId      Int
   user        User           @relation(fields: [userId], references: [id])
   readings    EnergyReading[]
@@ -49,22 +443,182 @@ model EnergyReading {
   timestamp DateTime @default(now())
 }
 
-enum Role {
-  USER
-  ADMIN
-}
+// ===== ENUMS =====
+// Enums are not supported in SQLite, so we use String types instead.
+// The application logic will handle the validation of these string values.
 
-enum DeviceType {
-  SOLAR_PANEL
-  WIND_TURBINE
-  BATTERY
-  SMART_METER
-  OTHER
-}
-
-enum DeviceStatus {
-  ACTIVE
-  INACTIVE
-  MAINTENANCE
-  OFFLINE
-}
+// enum UserRole {
+//   CUSTOMER
+//   ADMIN
+//   PARTNER
+//   INSTALLER
+//   DISTRIBUTOR
+//   FINANCIAL
+// }
+//
+// enum ProductCategory {
+//   HOME_CHARGER
+//   COMMERCIAL_CHARGER
+//   FAST_CHARGER
+//   MOBILE_CHARGER
+//   ACCESSORY
+//   SOFTWARE
+// }
+//
+// enum ProductType {
+//   SMART_PLUG
+//   FAST_PLUG
+//   MOBILE_CHARGER
+//   CABLE
+//   ADAPTER
+//   SOFTWARE_LICENSE
+// }
+//
+// enum OrderStatus {
+//   PENDING
+//   CONFIRMED
+//   PROCESSING
+//   SHIPPED
+//   DELIVERED
+//   CANCELLED
+//   REFUNDED
+// }
+//
+// enum PaymentStatus {
+//   PENDING
+//   PROCESSING
+//   COMPLETED
+//   FAILED
+//   REFUNDED
+//   CANCELLED
+// }
+//
+// enum PaymentMethod {
+//   CREDIT_CARD
+//   DEBIT_CARD
+//   PAYPAL
+//   BANK_TRANSFER
+//   CRYPTO
+//   INVOICE
+// }
+//
+// enum ShipmentStatus {
+//   PENDING
+//   SHIPPED
+//   IN_TRANSIT
+//   DELIVERED
+//   FAILED
+// }
+//
+// enum ChargingStationType {
+//   AC_SLOW
+//   AC_FAST
+//   DC_FAST
+//   ULTRA_FAST
+// }
+//
+// enum ChargingStationStatus {
+//   ACTIVE
+//   INACTIVE
+//   MAINTENANCE
+//   OFFLINE
+// }
+//
+// enum ChargingSessionStatus {
+//   ACTIVE
+//   COMPLETED
+//   CANCELLED
+//   FAILED
+// }
+//
+// enum PartnerType {
+//   INSTALLER
+//   DISTRIBUTOR
+//   RESELLER
+//   SERVICE_PROVIDER
+// }
+//
+// enum PartnerStatus {
+//   PENDING
+//   APPROVED
+//   SUSPENDED
+//   TERMINATED
+// }
+//
+// enum InstallationStatus {
+//   SCHEDULED
+//   IN_PROGRESS
+//   COMPLETED
+//   CANCELLED
+// }
+//
+// enum MaintenanceType {
+//   PREVENTIVE
+//   CORRECTIVE
+//   EMERGENCY
+// }
+//
+// enum MaintenanceStatus {
+//   SCHEDULED
+//   IN_PROGRESS
+//   COMPLETED
+//   CANCELLED
+// }
+//
+// enum NotificationType {
+//   ORDER_UPDATE
+//   SHIPPING_UPDATE
+//   CHARGING_SESSION
+//   MAINTENANCE
+//   SYSTEM
+//   PROMOTIONAL
+// }
+//
+// enum TicketPriority {
+//   LOW
+//   MEDIUM
+//   HIGH
+//   URGENT
+// }
+//
+// enum TicketStatus {
+//   OPEN
+//   IN_PROGRESS
+//   RESOLVED
+//   CLOSED
+// }
+//
+// enum TicketCategory {
+//   TECHNICAL
+//   BILLING
+//   SHIPPING
+//   INSTALLATION
+//   GENERAL
+// }
+//
+// enum ContactMethod {
+//   EMAIL
+//   PHONE
+//   VIDEO_CALL
+// }
+//
+// // Legacy enums
+// enum Role {
+//   USER
+//   ADMIN
+// }
+//
+// enum DeviceType {
+//   SOLAR_PANEL
+//   WIND_TURBINE
+//   BATTERY
+//   SMART_METER
+//   OTHER
+// }
+//
+// enum DeviceStatus {
+//   ACTIVE
+//   INACTIVE
+//   MAINTENANCE
+//   OFFLINE
+// }

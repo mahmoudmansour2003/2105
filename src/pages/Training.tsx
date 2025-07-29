@@ -59,20 +59,7 @@ const Training = () => {
       <main className="flex-grow">
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h1 className="text-5xl font-serif font-extrabold text-horizop-yellow mb-2 drop-shadow-lg italic tracking-wide">IRVE TRAINING</h1>
-              <p className="text-white text-lg max-w-2xl mx-auto mt-4 mb-8">
-                Comprehensive training programs for EV charging infrastructure professionals.
-              </p>
-            </motion.div>
-
-            {/* Upcoming Courses */}
+            {/* Original Upcoming Courses Section */}
             <div className="mb-16">
               <h2 className="text-3xl font-serif font-bold text-horizop-yellow mb-8 text-center">Upcoming Courses</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -110,7 +97,7 @@ const Training = () => {
               </div>
             </div>
 
-            {/* Training Resources */}
+            {/* Original Training Resources Section */}
             <div className="mb-16">
               <h2 className="text-3xl font-serif font-bold text-horizop-yellow mb-8 text-center">Training Resources</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -143,7 +130,7 @@ const Training = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Original Contact Form Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

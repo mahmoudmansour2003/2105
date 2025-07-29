@@ -1,0 +1,282 @@
+@startuml Horizop Energy Connect - Sequence Diagrams
+
+' Customer Registration Sequence
+title Customer Registration Flow
+
+actor Customer as C
+participant "Frontend" as F
+participant "Auth API" as A
+participant "Database" as D
+participant "Email Service" as E
+
+C -> F: Fill registration form
+F -> A: POST /api/auth/register
+A -> D: Create user record
+D -> A: User created
+A -> E: Send verification email
+E -> C: Email verification link
+A -> F: Registration success response
+F -> C: Show success message
+
+' Product Purchase Sequence
+title Product Purchase Flow
+
+actor Customer as C
+participant "Frontend" as F
+participant "Product API" as P
+participant "Cart API" as CA
+participant "Order API" as O
+participant "Payment API" as PA
+participant "Database" as D
+participant "Payment Gateway" as PG
+participant "Email Service" as E
+
+C -> F: Browse products
+F -> P: GET /api/products
+P -> D: Query products
+D -> P: Product list
+P -> F: Return products
+F -> C: Display products
+
+C -> F: Add product to cart
+F -> CA: POST /api/cart/add
+CA -> D: Update cart
+D -> CA: Cart updated
+CA -> F: Cart updated response
+F -> C: Show cart
+
+C -> F: Proceed to checkout
+F -> O: POST /api/orders
+O -> D: Create order
+D -> O: Order created
+O -> PA: Process payment
+PA -> PG: Charge customer
+PG -> PA: Payment successful
+PA -> O: Payment confirmed
+O -> D: Update order status
+O -> E: Send order confirmation
+E -> C: Order confirmation email
+O -> F: Order success response
+F -> C: Show order confirmation
+
+' Charging Session Sequence
+title Charging Session Flow
+
+actor Customer as C
+participant "Mobile App" as M
+participant "Charging API" as CH
+participant "Station Controller" as SC
+participant "Database" as D
+participant "Payment API" as PA
+participant "Notification Service" as N
+
+C -> M: Scan QR code at station
+M -> CH: POST /api/charging/start
+CH -> D: Get station info
+D -> CH: Station details
+CH -> SC: Start charging session
+SC -> CH: Session started
+CH -> D: Create session record
+D -> CH: Session created
+CH -> M: Session started response
+M -> C: Show charging status
+
+loop Charging in progress
+    SC -> CH: Energy consumption update
+    CH -> D: Update session
+    CH -> M: Real-time status update
+    M -> C: Show current consumption
+end
+
+C -> M: Stop charging
+M -> CH: POST /api/charging/stop
+CH -> SC: Stop charging session
+SC -> CH: Session stopped
+CH -> D: Update session with final data
+D -> CH: Session updated
+CH -> PA: Process charging payment
+PA -> CH: Payment processed
+CH -> N: Send session summary
+N -> C: Session summary notification
+CH -> M: Session completed response
+M -> C: Show session summary
+
+' Partner Registration Sequence
+title Partner Registration Flow
+
+actor Partner as P
+participant "Frontend" as F
+participant "Partner API" as PA
+participant "Admin Dashboard" as AD
+participant "Database" as D
+participant "Email Service" as E
+
+P -> F: Fill partner application
+F -> PA: POST /api/partners/register
+PA -> D: Create partner profile
+D -> PA: Profile created
+PA -> E: Send application notification
+E -> AD: Admin notification
+PA -> F: Application submitted response
+F -> P: Show application status
+
+AD -> PA: GET /api/admin/partner-applications
+PA -> D: Query pending applications
+D -> PA: Application list
+PA -> AD: Return applications
+AD -> P: Review application
+
+AD -> PA: PUT /api/admin/partners/:id/approve
+PA -> D: Update partner status
+D -> PA: Status updated
+PA -> E: Send approval notification
+E -> P: Approval email
+PA -> AD: Approval confirmed
+AD -> P: Show approval status
+
+' Installation Request Sequence
+title Installation Request Flow
+
+actor Customer as C
+participant "Frontend" as F
+participant "Installation API" as I
+participant "Installer API" as IA
+participant "Database" as D
+participant "Email Service" as E
+participant "Installer" as IN
+
+C -> F: Submit installation request
+F -> I: POST /api/installations
+I -> D: Create installation record
+D -> I: Installation created
+I -> E: Send request notification
+E -> IN: Installation request email
+I -> F: Request submitted response
+F -> C: Show request confirmation
+
+IN -> IA: GET /api/installer/requests
+IA -> D: Query pending installations
+D -> IA: Installation list
+IA -> IN: Return installations
+IN -> C: Review installation request
+
+IN -> IA: PUT /api/installer/installations/:id/schedule
+IA -> D: Update installation schedule
+D -> IA: Schedule updated
+IA -> E: Send scheduling notification
+E -> C: Installation scheduled email
+IA -> IN: Scheduling confirmed
+IN -> C: Show scheduled installation
+
+' Support Ticket Sequence
+title Support Ticket Flow
+
+actor Customer as C
+participant "Frontend" as F
+participant "Support API" as S
+participant "Admin Dashboard" as AD
+participant "Database" as D
+participant "Email Service" as E
+participant "Admin" as A
+
+C -> F: Create support ticket
+F -> S: POST /api/support/tickets
+S -> D: Create ticket record
+D -> S: Ticket created
+S -> E: Send ticket notification
+E -> A: New ticket email
+S -> F: Ticket created response
+F -> C: Show ticket confirmation
+
+A -> AD: View support tickets
+AD -> S: GET /api/admin/support/tickets
+S -> D: Query tickets
+D -> S: Ticket list
+S -> AD: Return tickets
+AD -> A: Display tickets
+
+A -> AD: Assign ticket to agent
+AD -> S: PUT /api/admin/support/tickets/:id/assign
+S -> D: Update ticket assignment
+D -> S: Assignment updated
+S -> E: Send assignment notification
+E -> C: Ticket assigned email
+S -> AD: Assignment confirmed
+AD -> A: Show assignment status
+
+A -> AD: Update ticket status
+AD -> S: PUT /api/admin/support/tickets/:id/update
+S -> D: Update ticket status
+D -> S: Status updated
+S -> E: Send status update
+E -> C: Status update email
+S -> AD: Update confirmed
+AD -> A: Show updated status
+
+' Real-time Notification Sequence
+title Real-time Notification Flow
+
+actor Customer as C
+participant "Frontend" as F
+participant "WebSocket" as WS
+participant "Notification API" as N
+participant "Database" as D
+participant "Email Service" as E
+participant "SMS Service" as SMS
+
+C -> F: Connect to WebSocket
+F -> WS: Establish connection
+WS -> F: Connection established
+F -> C: Connected to real-time updates
+
+N -> WS: New notification event
+WS -> F: Push notification
+F -> C: Display notification
+
+N -> D: Store notification
+D -> N: Notification stored
+N -> E: Send email notification
+E -> C: Email notification
+N -> SMS: Send SMS notification
+SMS -> C: SMS notification
+
+C -> F: Mark notification as read
+F -> N: PUT /api/notifications/:id/read
+N -> D: Update notification status
+D -> N: Status updated
+N -> F: Update confirmed
+F -> C: Update notification display
+
+' Séquence : Commande et installation d'une borne de recharge (HORIZOP ENERGY)
+title Séquence : Commande et installation d'une borne de recharge (HORIZOP ENERGY)
+
+actor Client
+participant "Site Web HORIZOP" as Web
+participant "Service Commande" as Commande
+participant "Service Paiement" as Paiement
+participant "Service Installation" as Installation
+participant "Partenaire Installateur" as Installateur
+
+Client -> Web : Parcourir les produits
+Client -> Web : Ajouter une borne au panier
+Client -> Web : Passer commande
+Web -> Commande : Créer une nouvelle commande
+Commande -> Paiement : Demander le paiement
+Paiement -> Client : Saisir les informations de paiement
+Client -> Paiement : Valider le paiement
+Paiement -> Commande : Confirmer le paiement
+Commande -> Web : Confirmer la commande au client
+
+alt Paiement accepté
+    Commande -> Installation : Planifier l'installation
+    Installation -> Installateur : Notifier la demande d'installation
+    Installateur -> Installation : Confirmer la date d'installation
+    Installation -> Client : Envoyer la date d'installation
+    Client -> Installation : Confirmer la disponibilité
+    Installateur -> Installation : Effectuer l'installation
+    Installation -> Client : Confirmer l'installation terminée
+else Paiement refusé
+    Paiement -> Client : Afficher une erreur de paiement
+end
+
+@enduml 

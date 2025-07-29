@@ -1,0 +1,159 @@
+@startuml
+' Diagramme de Classes - HORIZOP ENERGY
+left to right direction
+
+' --- Enumerations ---
+enum RôleUtilisateur {
+  CLIENT
+  ADMIN
+  PARTENAIRE
+  SUPPORT
+}
+
+' --- Utilisateurs ---
+class Utilisateur {
+  -id : Long
+  -nom : String
+  -prenom : String
+  -email : String
+  -motDePasse : String
+  -adresse : String
+  -telephone : String
+  -dateCreation : Date
+  -rôle : RôleUtilisateur
+}
+
+class ProfilClient {
+  -id : Long
+  -preferences : String
+  -newsletter : Boolean
+}
+
+class Partenaire {
+  -id : Long
+  -nomEntreprise : String
+  -adresse : String
+  -telephone : String
+  -email : String
+  -dateInscription : Date
+}
+
+class Administrateur {
+  -id : Long
+  -nom : String
+  -email : String
+}
+
+' --- Produits & Services ---
+class Produit {
+  -id : Long
+  -nom : String
+  -description : String
+  -prix : Double
+  -stock : Integer
+  -image : String
+  -dateAjout : Date
+  -remise : Double
+  -livraisonGratuite : Boolean
+}
+
+class Service {
+  -id : Long
+  -nom : String
+  -description : String
+  -prix : Double
+  -disponibilite : String
+  -image : String
+}
+
+class EvaluationProduit {
+  -id : Long
+  -commentaire : String
+  -note : Integer
+  -date : Date
+}
+
+class EvaluationService {
+  -id : Long
+  -commentaire : String
+  -note : Integer
+  -date : Date
+}
+
+' --- Commandes & Réservations ---
+class Commande {
+  -id : Long
+  -dateCommande : Date
+  -statut : String
+  -montantTotal : Double
+  -devise : String
+  -payé : Boolean
+}
+
+class LigneCommande {
+  -id : Long
+  -quantité : Integer
+  -prixUnitaire : Double
+}
+
+class RéservationService {
+  -id : Long
+  -dateRéservation : Date
+  -statut : String
+  -créneau : String
+  -confirmée : Boolean
+}
+
+' --- Centres & Abonnements ---
+class Centre {
+  -id : Long
+  -nom : String
+  -adresse : String
+  -email : String
+  -téléphone : String
+  -actif : Boolean
+  -dateExpiration : Date
+}
+
+class Abonnement {
+  -id : Long
+  -nom : String
+  -nbMois : Integer
+  -montant : Double
+  -dateDébut : Date
+  -dateFin : Date
+}
+
+' --- Support & Tickets ---
+class TicketSupport {
+  -id : Long
+  -sujet : String
+  -description : String
+  -dateCréation : Date
+  -statut : String
+}
+
+class MessageSupport {
+  -id : Long
+  -contenu : String
+  -date : Date
+  -expéditeur : String
+}
+
+' --- Relations principales ---
+Utilisateur "1" -- "0..*" Commande : passe >
+Utilisateur "1" -- "0..*" RéservationService : réserve >
+Utilisateur "1" -- "0..*" TicketSupport : crée >
+Utilisateur "1" -- "0..*" EvaluationProduit : écrit >
+Utilisateur "1" -- "0..*" EvaluationService : écrit >
+Commande "1" -- "1..*" LigneCommande : contient >
+LigneCommande "*" -- "1" Produit : concerne >
+RéservationService "*" -- "1" Service : concerne >
+Produit "1" -- "0..*" EvaluationProduit : reçoit >
+Service "1" -- "0..*" EvaluationService : reçoit >
+Utilisateur "0..*" -- "1" ProfilClient : a >
+Partenaire "1" -- "0..*" Centre : gère >
+Centre "1" -- "0..*" Abonnement : propose >
+TicketSupport "1" -- "0..*" MessageSupport : contient >
+
+@enduml 

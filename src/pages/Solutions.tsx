@@ -8,16 +8,16 @@ const solutions = [
     titleKey: 'HORIZOP SmartPlug',
     typeKey: 'solutionTypeHome',
     image: '/images/freepik__a-man-charging-his-electric-vehicle__38007.png',
-    featuresKeys: [
-      'simpleDesign',
-      'easyInstallationWarranty',
-      '22kWOutput',
-      '7_4kWOutput',
-      'rfidPayment',
-      'mobileApp',
-      'ledIndicator',
-      'solarCompatibility',
-      'bidirectionalCharging'
+    features: [
+      'A simple and futuristic design',
+      'Easy installation with a standard 3-year warranty',
+      'Up to 22kW of output power for 3-Phase AC charging',
+      'Up to 7.4kW output power for 1-Phase AC charging',
+      'Integrated contactless RFID payment system',
+      'User-friendly mobile application for charge monitoring',
+      'An LED bar on the front to indicate the charging status',
+      'Compatible with existing solar PV installations',
+      'Bidirectional charging allows a supported EV\'s battery to be used as a power supply for buildings'
     ],
     badgeKey: 'badgeComingSoon',
     bg: 'bg-white'
@@ -26,16 +26,16 @@ const solutions = [
     titleKey: 'HORIZOP SmartPlug',
     typeKey: 'solutionTypeSemiPublic',
     image: '/images/Semi Public Use.png',
-    featuresKeys: [
-      'simpleDesign',
-      'easyInstallationWarranty',
-      '22kWOutput',
-      '7_4kWOutput',
-      'rfidPayment',
-      'mobileApp',
-      'ledIndicator',
-      'solarCompatibility',
-      'bidirectionalCharging'
+    features: [
+      'A simple and futuristic design',
+      'Easy installation with a standard 3-year warranty',
+      'Up to 22kW of output power for 3-Phase AC charging',
+      'Up to 7.4kW output power for 1-Phase AC charging',
+      'Integrated contactless RFID payment system',
+      'User-friendly mobile application for charge monitoring',
+      'An LED bar on the front to indicate the charging status',
+      'Compatible with existing solar PV installations',
+      'Bidirectional charging allows a supported EV\'s battery to be used as a power supply for buildings'
     ],
     badgeKey: 'badgeComingSoon',
     bg: 'bg-white'

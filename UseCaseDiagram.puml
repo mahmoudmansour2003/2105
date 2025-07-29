@@ -1,0 +1,179 @@
+@startuml Horizop Energy Connect - Use Case Diagram
+
+!define RECTANGLE class
+
+' Actors
+actor Customer as C
+actor Partner as P
+actor Installer as I
+actor Distributor as D
+actor Financial as F
+actor Admin as A
+actor System as S
+
+' Use Case Packages
+package "Customer Use Cases" {
+    usecase "Browse Products" as UC1
+    usecase "View Product Details" as UC2
+    usecase "Add to Cart" as UC3
+    usecase "Manage Shopping Cart" as UC4
+    usecase "Checkout" as UC5
+    usecase "Track Orders" as UC6
+    usecase "View Order History" as UC7
+    usecase "Register Account" as UC8
+    usecase "Login/Logout" as UC9
+    usecase "Update Profile" as UC10
+    usecase "Request Quote" as UC11
+    usecase "Contact Support" as UC12
+    usecase "View Charging Stations" as UC13
+    usecase "Start Charging Session" as UC14
+    usecase "View Charging History" as UC15
+    usecase "Download Mobile App" as UC16
+    usecase "Switch Language" as UC17
+    usecase "View Training Materials" as UC18
+}
+
+package "Partner Use Cases" {
+    usecase "Partner Registration" as UC19
+    usecase "Manage Partner Profile" as UC20
+    usecase "View Partner Orders" as UC21
+    usecase "Manage Charging Stations" as UC22
+    usecase "View Commission Reports" as UC23
+    usecase "Access Partner Portal" as UC24
+    usecase "Manage Installations" as UC25
+}
+
+package "Installer Use Cases" {
+    usecase "Installer Registration" as UC26
+    usecase "Manage Installer Profile" as UC27
+    usecase "View Installation Requests" as UC28
+    usecase "Schedule Installations" as UC29
+    usecase "Update Installation Status" as UC30
+    usecase "View Installation History" as UC31
+}
+
+package "Distributor Use Cases" {
+    usecase "Distributor Registration" as UC32
+    usecase "Manage Distributor Profile" as UC33
+    usecase "View Product Inventory" as UC34
+    usecase "Manage Sales Reports" as UC35
+    usecase "View Client Information" as UC36
+}
+
+package "Financial Customer Use Cases" {
+    usecase "Financial Registration" as UC37
+    usecase "Submit Investment Interest" as UC38
+    usecase "View Investment Opportunities" as UC39
+    usecase "Contact Financial Team" as UC40
+}
+
+package "Admin Use Cases" {
+    usecase "Manage Users" as UC41
+    usecase "Manage Products" as UC42
+    usecase "Manage Orders" as UC43
+    usecase "Approve Partners" as UC44
+    usecase "Manage Charging Infrastructure" as UC45
+    usecase "View System Analytics" as UC46
+    usecase "Manage Support Tickets" as UC47
+    usecase "Send Notifications" as UC48
+}
+
+package "System Use Cases" {
+    usecase "Process Payments" as UC49
+    usecase "Send Email Notifications" as UC50
+    usecase "Send SMS Notifications" as UC51
+    usecase "Generate Reports" as UC52
+    usecase "Handle Payment Webhooks" as UC53
+    usecase "Process Charging Sessions" as UC54
+    usecase "Monitor System Health" as UC55
+}
+
+' Customer Relationships
+C --> UC1
+C --> UC2
+C --> UC3
+C --> UC4
+C --> UC5
+C --> UC6
+C --> UC7
+C --> UC8
+C --> UC9
+C --> UC10
+C --> UC11
+C --> UC12
+C --> UC13
+C --> UC14
+C --> UC15
+C --> UC16
+C --> UC17
+C --> UC18
+
+' Partner Relationships
+P --> UC19
+P --> UC20
+P --> UC21
+P --> UC22
+P --> UC23
+P --> UC24
+P --> UC25
+
+' Installer Relationships
+I --> UC26
+I --> UC27
+I --> UC28
+I --> UC29
+I --> UC30
+I --> UC31
+
+' Distributor Relationships
+D --> UC32
+D --> UC33
+D --> UC34
+D --> UC35
+D --> UC36
+
+' Financial Customer Relationships
+F --> UC37
+F --> UC38
+F --> UC39
+F --> UC40
+
+' Admin Relationships
+A --> UC41
+A --> UC42
+A --> UC43
+A --> UC44
+A --> UC45
+A --> UC46
+A --> UC47
+A --> UC48
+
+' System Relationships
+S --> UC49
+S --> UC50
+S --> UC51
+S --> UC52
+S --> UC53
+S --> UC54
+S --> UC55
+
+' Include Relationships
+UC5 ..> UC49 : <<include>>
+UC14 ..> UC54 : <<include>>
+UC25 ..> UC30 : <<include>>
+UC48 ..> UC50 : <<include>>
+UC48 ..> UC51 : <<include>>
+
+' Extend Relationships
+UC5 ..> UC6 : <<extend>>
+UC14 ..> UC15 : <<extend>>
+UC28 ..> UC30 : <<extend>>
+UC43 ..> UC52 : <<extend>>
+
+' Generalization Relationships
+P --|> C
+I --|> C
+D --|> C
+F --|> C
+
+@enduml 

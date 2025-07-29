@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -199,6 +198,13 @@ export default {
 				'particle-2': 'particle-move 15s ease-in-out infinite reverse',
 				'particle-3': 'particle-move 18s ease-in-out infinite',
 			}
+		}
+	},
+	variants: {
+		extend: {
+			transformStyle: ['hover'],
+			perspective: ['hover'],
+			backfaceVisibility: ['hover'],
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
